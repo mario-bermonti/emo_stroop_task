@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy2 Experiment Builder (v1.85.6),
-    on Fri Aug 24 14:54:33 2018
+    on Fri Aug 24 16:07:23 2018
 If you publish work using this script please cite the PsychoPy publications:
     Peirce, JW (2007) PsychoPy - Psychophysics software in Python.
         Journal of Neuroscience Methods, 162(1-2), 8-13.
@@ -78,7 +78,7 @@ instr1 = visual.TextStim(win=win, name='instr1',
 trialClock = core.Clock()
 word = visual.TextStim(win=win, name='word',
     text='default text',
-    font='Arial',
+    font=u'Arial',
     pos=[0, 0], height=0.2, wrapWidth=None, ori=0, 
     color=1.0, colorSpace='rgb', opacity=1,
     depth=0.0);
@@ -107,7 +107,7 @@ instrText = visual.TextStim(win=win, name='instrText',
 trialClock = core.Clock()
 word = visual.TextStim(win=win, name='word',
     text='default text',
-    font='Arial',
+    font=u'Arial',
     pos=[0, 0], height=0.2, wrapWidth=None, ori=0, 
     color=1.0, colorSpace='rgb', opacity=1,
     depth=0.0);
@@ -116,8 +116,8 @@ word = visual.TextStim(win=win, name='word',
 thanksClock = core.Clock()
 thanksText = visual.TextStim(win=win, name='thanksText',
     text=u'\xa1Completaste el experimento!\n\n\xa1Muchas gracias!',
-    font='arial',
-    pos=[0, 0], height=0.2, wrapWidth=None, ori=0, 
+    font=u'arial',
+    pos=[0, 0], height=0.1, wrapWidth=None, ori=0, 
     color=[1, 1, 1], colorSpace='rgb', opacity=1,
     depth=0.0);
 
@@ -197,7 +197,7 @@ routineTimer.reset()
 # set up handler to look after randomisation of conditions etc
 practice = data.TrialHandler(nReps=1.0, method='random', 
     extraInfo=expInfo, originPath=-1,
-    trialList=data.importConditions(u'trialTypes.csv'),
+    trialList=data.importConditions(u'practice_trials.csv'),
     seed=None, name='practice')
 thisExp.addLoop(practice)  # add the loop to the experiment
 thisPractice = practice.trialList[0]  # so we can initialise stimuli with some values
@@ -447,9 +447,9 @@ for thisComponent in instructComponents:
 routineTimer.reset()
 
 # set up handler to look after randomisation of conditions etc
-trials = data.TrialHandler(nReps=5.0, method='random', 
+trials = data.TrialHandler(nReps=1.0, method='random', 
     extraInfo=expInfo, originPath=-1,
-    trialList=data.importConditions(u'trialTypes.csv'),
+    trialList=data.importConditions(u'exp_trials.csv'),
     seed=None, name='trials')
 thisExp.addLoop(trials)  # add the loop to the experiment
 thisTrial = trials.trialList[0]  # so we can initialise stimuli with some values
@@ -558,7 +558,7 @@ for thisTrial in trials:
     routineTimer.reset()
     thisExp.nextEntry()
     
-# completed 5.0 repeats of 'trials'
+# completed 1.0 repeats of 'trials'
 
 # get names of stimulus parameters
 if trials.trialList in ([], [None], None):
