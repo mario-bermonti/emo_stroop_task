@@ -57,6 +57,16 @@
         <Param name="letterHeight" updates="constant" val="0.1" valType="code"/>
       </TextComponent>
     </Routine>
+    <Routine name="set_block">
+      <CodeComponent name="code">
+        <Param name="Begin Experiment" updates="constant" val="import random&amp;#10;blocks = [&quot;1:9&quot;, &quot;10:18&quot;]&amp;#10;c = 0" valType="extendedCode"/>
+        <Param name="name" updates="None" val="code" valType="code"/>
+        <Param name="Begin Routine" updates="constant" val="random.shuffle(blocks)&amp;#10;condsFileToUse = blocks.pop()&amp;#10;print condsFileToUse &amp;#10;print c + 1 " valType="extendedCode"/>
+        <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
+        <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
+      </CodeComponent>
+    </Routine>
     <Routine name="trial">
       <TextComponent name="word">
         <Param name="opacity" updates="constant" val="1" valType="code"/>
@@ -212,6 +222,18 @@
     <Routine name="feedback"/>
     <LoopTerminator name="practice"/>
     <Routine name="instruct"/>
+    <LoopInitiator loopType="TrialHandler" name="trials_2">
+      <Param name="conditionsFile" updates="None" val="" valType="str"/>
+      <Param name="name" updates="None" val="trials_2" valType="code"/>
+      <Param name="isTrials" updates="None" val="True" valType="bool"/>
+      <Param name="random seed" updates="None" val="" valType="code"/>
+      <Param name="loopType" updates="None" val="random" valType="str"/>
+      <Param name="nReps" updates="None" val="2" valType="code"/>
+      <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
+      <Param name="conditions" updates="None" val="None" valType="str"/>
+      <Param name="Selected rows" updates="None" val="" valType="str"/>
+    </LoopInitiator>
+    <Routine name="set_block"/>
     <LoopInitiator loopType="TrialHandler" name="trials">
       <Param name="conditionsFile" updates="None" val="exp_trials.csv" valType="str"/>
       <Param name="name" updates="None" val="trials" valType="code"/>
@@ -220,11 +242,12 @@
       <Param name="loopType" updates="None" val="random" valType="str"/>
       <Param name="nReps" updates="None" val="1" valType="num"/>
       <Param name="endPoints" updates="None" val="[1, 2]" valType="num"/>
-      <Param name="conditions" updates="None" val="[{'text': u'positiva1', 'condition': u'positive', 'letterColor': u'blue'}, {'text': u'negativa1', 'condition': u'negative', 'letterColor': u'blue'}, {'text': u'neutral1', 'condition': u'neutral', 'letterColor': u'blue'}, {'text': u'positiva2', 'condition': u'positive', 'letterColor': u'green'}, {'text': u'negativa2', 'condition': u'negative', 'letterColor': u'green'}, {'text': u'neutral2', 'condition': u'neutral', 'letterColor': u'green'}, {'text': u'positiva3', 'condition': u'positive', 'letterColor': u'red'}, {'text': u'negativa3', 'condition': u'negative', 'letterColor': u'red'}, {'text': u'neutral3', 'condition': u'neutral', 'letterColor': u'red'}]" valType="str"/>
-      <Param name="Selected rows" updates="None" val="" valType="str"/>
+      <Param name="conditions" updates="None" val="[{'text': u'positiva1', 'letterColor': u'blue', 'corrAns': u'right', 'condition': u'positive'}, {'text': u'negativa1', 'letterColor': u'blue', 'corrAns': u'right', 'condition': u'negative'}, {'text': u'neutral1', 'letterColor': u'blue', 'corrAns': u'right', 'condition': u'neutral'}, {'text': u'positiva2', 'letterColor': u'green', 'corrAns': u'down', 'condition': u'positive'}, {'text': u'negativa2', 'letterColor': u'green', 'corrAns': u'down', 'condition': u'negative'}, {'text': u'neutral2', 'letterColor': u'green', 'corrAns': u'down', 'condition': u'neutral'}, {'text': u'positiva3', 'letterColor': u'red', 'corrAns': u'left', 'condition': u'positive'}, {'text': u'negativa3', 'letterColor': u'red', 'corrAns': u'left', 'condition': u'negative'}, {'text': u'neutral3', 'letterColor': u'red', 'corrAns': u'left', 'condition': u'neutral'}, {'text': u'positiva4', 'letterColor': u'blue', 'corrAns': u'right', 'condition': u'positive'}, {'text': u'negativa4', 'letterColor': u'blue', 'corrAns': u'right', 'condition': u'negative'}, {'text': u'neutral4', 'letterColor': u'blue', 'corrAns': u'right', 'condition': u'neutral'}, {'text': u'positiva5', 'letterColor': u'green', 'corrAns': u'down', 'condition': u'positive'}, {'text': u'negativa5', 'letterColor': u'green', 'corrAns': u'down', 'condition': u'negative'}, {'text': u'neutral5', 'letterColor': u'green', 'corrAns': u'down', 'condition': u'neutral'}, {'text': u'positiva6', 'letterColor': u'red', 'corrAns': u'left', 'condition': u'positive'}, {'text': u'negativa6', 'letterColor': u'red', 'corrAns': u'left', 'condition': u'negative'}, {'text': u'neutral6', 'letterColor': u'red', 'corrAns': u'left', 'condition': u'neutral'}]" valType="str"/>
+      <Param name="Selected rows" updates="None" val="$condsFileToUse" valType="str"/>
     </LoopInitiator>
     <Routine name="trial"/>
     <LoopTerminator name="trials"/>
+    <LoopTerminator name="trials_2"/>
     <Routine name="thanks"/>
   </Flow>
 </PsychoPy2experiment>
