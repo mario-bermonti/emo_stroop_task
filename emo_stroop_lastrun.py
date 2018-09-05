@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy2 Experiment Builder (v1.85.6),
-    on Wed Sep  5 10:51:28 2018
+    on Wed Sep  5 13:36:44 2018
 If you publish work using this script please cite the PsychoPy publications:
     Peirce, JW (2007) PsychoPy - Psychophysics software in Python.
         Journal of Neuroscience Methods, 162(1-2), 8-13.
@@ -106,8 +106,14 @@ instrText = visual.TextStim(win=win, name='instrText',
 # Initialize components for Routine "set_block"
 set_blockClock = core.Clock()
 import random
-blocks = ["1:9", "10:18"]
-c = 0
+import pandas as pd
+blocks_exp = pd.read_csv('choose_blocks.csv')
+blocks_exp_clean = []
+for block in blocks_exp.values:
+    blocks_exp_clean.append(block[0])
+
+
+
 
 # Initialize components for Routine "trial"
 trialClock = core.Clock()
@@ -477,10 +483,9 @@ for thisTrial_block in trial_blocks:
     frameN = -1
     continueRoutine = True
     # update component parameters for each repeat
-    random.shuffle(blocks)
-    condsFileToUse = blocks.pop()
-    print condsFileToUse 
-    print c + 1 
+    random.shuffle(blocks_exp_clean)
+    block_to_use = blocks_exp_clean.pop()
+    
     # keep track of which components have finished
     set_blockComponents = []
     for thisComponent in set_blockComponents:
@@ -523,7 +528,7 @@ for thisTrial_block in trial_blocks:
     # set up handler to look after randomisation of conditions etc
     trials = data.TrialHandler(nReps=1.0, method='random', 
         extraInfo=expInfo, originPath=-1,
-        trialList=data.importConditions('exp_trials.csv', selection=condsFileToUse),
+        trialList=data.importConditions('exp_trials.csv', selection=block_to_use),
         seed=None, name='trials')
     thisExp.addLoop(trials)  # add the loop to the experiment
     thisTrial = trials.trialList[0]  # so we can initialise stimuli with some values
