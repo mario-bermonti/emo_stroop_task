@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy2 Experiment Builder (v1.85.6),
-    on Wed Aug 29 13:54:08 2018
+    on Wed Sep  5 10:51:28 2018
 If you publish work using this script please cite the PsychoPy publications:
     Peirce, JW (2007) PsychoPy - Psychophysics software in Python.
         Journal of Neuroscience Methods, 162(1-2), 8-13.
@@ -78,7 +78,7 @@ instr1 = visual.TextStim(win=win, name='instr1',
 trialClock = core.Clock()
 word = visual.TextStim(win=win, name='word',
     text='default text',
-    font=u'Arial',
+    font='Arial',
     pos=[0, 0], height=0.2, wrapWidth=None, ori=0, 
     color=1.0, colorSpace='rgb', opacity=1,
     depth=0.0);
@@ -113,7 +113,7 @@ c = 0
 trialClock = core.Clock()
 word = visual.TextStim(win=win, name='word',
     text='default text',
-    font=u'Arial',
+    font='Arial',
     pos=[0, 0], height=0.2, wrapWidth=None, ori=0, 
     color=1.0, colorSpace='rgb', opacity=1,
     depth=0.0);
@@ -453,23 +453,23 @@ for thisComponent in instructComponents:
 routineTimer.reset()
 
 # set up handler to look after randomisation of conditions etc
-trials_2 = data.TrialHandler(nReps=2, method='random', 
+trial_blocks = data.TrialHandler(nReps=2, method='random', 
     extraInfo=expInfo, originPath=-1,
     trialList=[None],
-    seed=None, name='trials_2')
-thisExp.addLoop(trials_2)  # add the loop to the experiment
-thisTrial_2 = trials_2.trialList[0]  # so we can initialise stimuli with some values
-# abbreviate parameter names if possible (e.g. rgb = thisTrial_2.rgb)
-if thisTrial_2 != None:
-    for paramName in thisTrial_2.keys():
-        exec(paramName + '= thisTrial_2.' + paramName)
+    seed=None, name='trial_blocks')
+thisExp.addLoop(trial_blocks)  # add the loop to the experiment
+thisTrial_block = trial_blocks.trialList[0]  # so we can initialise stimuli with some values
+# abbreviate parameter names if possible (e.g. rgb = thisTrial_block.rgb)
+if thisTrial_block != None:
+    for paramName in thisTrial_block.keys():
+        exec(paramName + '= thisTrial_block.' + paramName)
 
-for thisTrial_2 in trials_2:
-    currentLoop = trials_2
-    # abbreviate parameter names if possible (e.g. rgb = thisTrial_2.rgb)
-    if thisTrial_2 != None:
-        for paramName in thisTrial_2.keys():
-            exec(paramName + '= thisTrial_2.' + paramName)
+for thisTrial_block in trial_blocks:
+    currentLoop = trial_blocks
+    # abbreviate parameter names if possible (e.g. rgb = thisTrial_block.rgb)
+    if thisTrial_block != None:
+        for paramName in thisTrial_block.keys():
+            exec(paramName + '= thisTrial_block.' + paramName)
     
     # ------Prepare to start Routine "set_block"-------
     t = 0
@@ -645,15 +645,15 @@ for thisTrial_2 in trials_2:
         dataOut=['n','all_mean','all_std', 'all_raw'])
     thisExp.nextEntry()
     
-# completed 2 repeats of 'trials_2'
+# completed 2 repeats of 'trial_blocks'
 
 # get names of stimulus parameters
-if trials_2.trialList in ([], [None], None):
+if trial_blocks.trialList in ([], [None], None):
     params = []
 else:
-    params = trials_2.trialList[0].keys()
+    params = trial_blocks.trialList[0].keys()
 # save data for this loop
-trials_2.saveAsExcel(filename + '.xlsx', sheetName='trials_2',
+trial_blocks.saveAsExcel(filename + '.xlsx', sheetName='trial_blocks',
     stimOut=params,
     dataOut=['n','all_mean','all_std', 'all_raw'])
 

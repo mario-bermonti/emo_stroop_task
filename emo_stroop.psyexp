@@ -222,9 +222,9 @@
     <Routine name="feedback"/>
     <LoopTerminator name="practice"/>
     <Routine name="instruct"/>
-    <LoopInitiator loopType="TrialHandler" name="trials_2">
+    <LoopInitiator loopType="TrialHandler" name="trial_blocks">
       <Param name="conditionsFile" updates="None" val="" valType="str"/>
-      <Param name="name" updates="None" val="trials_2" valType="code"/>
+      <Param name="name" updates="None" val="trial_blocks" valType="code"/>
       <Param name="isTrials" updates="None" val="True" valType="bool"/>
       <Param name="random seed" updates="None" val="" valType="code"/>
       <Param name="loopType" updates="None" val="random" valType="str"/>
@@ -247,7 +247,7 @@
     </LoopInitiator>
     <Routine name="trial"/>
     <LoopTerminator name="trials"/>
-    <LoopTerminator name="trials_2"/>
+    <LoopTerminator name="trial_blocks"/>
     <Routine name="thanks"/>
   </Flow>
 </PsychoPy2experiment>
