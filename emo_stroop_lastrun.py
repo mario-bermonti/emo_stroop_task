@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy2 Experiment Builder (v1.85.6),
-    on Wed Sep  5 13:36:44 2018
+    on Sat Sep 15 12:32:51 2018
 If you publish work using this script please cite the PsychoPy publications:
     Peirce, JW (2007) PsychoPy - Psychophysics software in Python.
         Journal of Neuroscience Methods, 162(1-2), 8-13.
@@ -40,7 +40,7 @@ filename = _thisDir + os.sep + u'data' + os.sep + '%s_%s' % (expInfo['participan
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
     extraInfo=expInfo, runtimeInfo=None,
-    originPath=u'/Users/MBP/Research/Consultation services/PHSU/Design and stats consultation/Eliut/Suicidal Behavior/Emotional Stroop/emo_stroop.psyexp',
+    originPath=u'/Users/MBP/Box Sync/Research/Consultation services/PHSU/Design and stats consultation/Consult Eliut/Suicide and Emotional Regulation Project/Emotional Stroop/emo_stroop.psyexp',
     savePickle=True, saveWideText=True,
     dataFileName=filename)
 # save a log file for detail verbose info
@@ -53,7 +53,7 @@ endExpNow = False  # flag for 'escape' or other condition => quit the exp
 
 # Setup the Window
 win = visual.Window(
-    size=(1280, 800), fullscr=True, screen=0,
+    size=(1920, 1080), fullscr=True, screen=0,
     allowGUI=False, allowStencil=False,
     monitor='testMonitor', color='black', colorSpace='rgb',
     blendMode='avg', useFBO=True,
@@ -459,7 +459,7 @@ for thisComponent in instructComponents:
 routineTimer.reset()
 
 # set up handler to look after randomisation of conditions etc
-trial_blocks = data.TrialHandler(nReps=2, method='random', 
+trial_blocks = data.TrialHandler(nReps=len(blocks_exp_clean), method='random', 
     extraInfo=expInfo, originPath=-1,
     trialList=[None],
     seed=None, name='trial_blocks')
@@ -484,7 +484,10 @@ for thisTrial_block in trial_blocks:
     continueRoutine = True
     # update component parameters for each repeat
     random.shuffle(blocks_exp_clean)
+    print blocks_exp_clean
     block_to_use = blocks_exp_clean.pop()
+    print '--'
+    print block_to_use
     
     # keep track of which components have finished
     set_blockComponents = []
@@ -650,7 +653,7 @@ for thisTrial_block in trial_blocks:
         dataOut=['n','all_mean','all_std', 'all_raw'])
     thisExp.nextEntry()
     
-# completed 2 repeats of 'trial_blocks'
+# completed len(blocks_exp_clean) repeats of 'trial_blocks'
 
 # get names of stimulus parameters
 if trial_blocks.trialList in ([], [None], None):
