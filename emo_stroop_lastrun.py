@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy2 Experiment Builder (v1.85.6),
-    on Sat Sep 15 12:32:51 2018
+    on Wed Sep 26 15:42:30 2018
 If you publish work using this script please cite the PsychoPy publications:
     Peirce, JW (2007) PsychoPy - Psychophysics software in Python.
         Journal of Neuroscience Methods, 162(1-2), 8-13.
@@ -53,7 +53,7 @@ endExpNow = False  # flag for 'escape' or other condition => quit the exp
 
 # Setup the Window
 win = visual.Window(
-    size=(1920, 1080), fullscr=True, screen=0,
+    size=(1440, 900), fullscr=True, screen=0,
     allowGUI=False, allowStencil=False,
     monitor='testMonitor', color='black', colorSpace='rgb',
     blendMode='avg', useFBO=True,
@@ -107,13 +107,18 @@ instrText = visual.TextStim(win=win, name='instrText',
 set_blockClock = core.Clock()
 import random
 import pandas as pd
-blocks_exp = pd.read_csv('choose_blocks.csv')
-blocks_exp_clean = []
-for block in blocks_exp.values:
-    blocks_exp_clean.append(block[0])
+block_ranges = pd.read_csv('choose_blocks.csv')
+
+# Prepare practice blocks
+block_ranges_practice = list(block_ranges.choose_blocks_practice)
+print(block_ranges_practice)
+random.shuffle(block_ranges_practice)
 
 
-
+# Prepare experiment blocks
+block_ranges_exp = list(block_ranges.choose_blocks_exp)
+random.shuffle(block_ranges_exp)
+print (2, block_ranges_exp)
 
 # Initialize components for Routine "trial"
 trialClock = core.Clock()
@@ -459,7 +464,7 @@ for thisComponent in instructComponents:
 routineTimer.reset()
 
 # set up handler to look after randomisation of conditions etc
-trial_blocks = data.TrialHandler(nReps=len(blocks_exp_clean), method='random', 
+trial_blocks = data.TrialHandler(nReps=len(block_ranges_exp), method='random', 
     extraInfo=expInfo, originPath=-1,
     trialList=[None],
     seed=None, name='trial_blocks')
@@ -483,11 +488,6 @@ for thisTrial_block in trial_blocks:
     frameN = -1
     continueRoutine = True
     # update component parameters for each repeat
-    random.shuffle(blocks_exp_clean)
-    print blocks_exp_clean
-    block_to_use = blocks_exp_clean.pop()
-    print '--'
-    print block_to_use
     
     # keep track of which components have finished
     set_blockComponents = []
@@ -531,7 +531,7 @@ for thisTrial_block in trial_blocks:
     # set up handler to look after randomisation of conditions etc
     trials = data.TrialHandler(nReps=1.0, method='random', 
         extraInfo=expInfo, originPath=-1,
-        trialList=data.importConditions('exp_trials.csv', selection=block_to_use),
+        trialList=data.importConditions('exp_trials.csv', selection=block_ranges_exp.pop()),
         seed=None, name='trials')
     thisExp.addLoop(trials)  # add the loop to the experiment
     thisTrial = trials.trialList[0]  # so we can initialise stimuli with some values
@@ -653,7 +653,7 @@ for thisTrial_block in trial_blocks:
         dataOut=['n','all_mean','all_std', 'all_raw'])
     thisExp.nextEntry()
     
-# completed len(blocks_exp_clean) repeats of 'trial_blocks'
+# completed len(block_ranges_exp) repeats of 'trial_blocks'
 
 # get names of stimulus parameters
 if trial_blocks.trialList in ([], [None], None):
