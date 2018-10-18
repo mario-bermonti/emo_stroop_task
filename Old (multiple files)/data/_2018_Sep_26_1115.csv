@@ -1,0 +1,7 @@
+text,corrAns,letterColor,practice.thisRepN,practice.thisTrialN,practice.thisN,practice.thisIndex,resp.keys,resp.corr,resp.rt,date,frameRate,expName,session,participant,
+azul,right,blue,0,0,0,0,left,0,0.784862041473,2018_Sep_26_1115,59.7718459953,emo_stroop,01,,
+rojo,left,red,0,1,1,9,left,1,0.84983587265,2018_Sep_26_1115,59.7718459953,emo_stroop,01,,
+verde,down,green,0,2,2,5,right,0,0.650424003601,2018_Sep_26_1115,59.7718459953,emo_stroop,01,,
+azul,right,blue,0,3,3,3,right,1,1.65115594864,2018_Sep_26_1115,59.7718459953,emo_stroop,01,,
+verde,down,green,0,4,4,4,down,1,0.78554391861,2018_Sep_26_1115,59.7718459953,emo_stroop,01,,
+azul,right,blue,0,5,5,2,left,0,1.55228495598,2018_Sep_26_1115,59.7718459953,emo_stroop,01,,

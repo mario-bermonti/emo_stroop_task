@@ -1,0 +1,10 @@
+text,letterColor,corrAns,condition
+positiva4,blue,right,positive
+negativa4,blue,right,negative
+neutral4,blue,right,neutral
+positiva5,green,down,positive
+negativa5,green,down,negative
+neutral5,green,down,neutral
+positiva6,red,left,positive
+negativa6,red,left,negative
+neutral6,red,left,neutral
