@@ -78,6 +78,26 @@
       </CodeComponent>
     </Routine>
     <Routine name="trial">
+      <TextComponent name="fixation_cross">
+        <Param name="opacity" updates="constant" val="1" valType="code"/>
+        <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
+        <Param name="name" updates="None" val="fixation_cross" valType="code"/>
+        <Param name="color" updates="constant" val="white" valType="str"/>
+        <Param name="wrapWidth" updates="constant" val="" valType="code"/>
+        <Param name="stopVal" updates="constant" val="1.0" valType="code"/>
+        <Param name="durationEstim" updates="None" val="" valType="code"/>
+        <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
+        <Param name="flip" updates="constant" val="" valType="str"/>
+        <Param name="startEstim" updates="None" val="" valType="code"/>
+        <Param name="units" updates="None" val="from exp settings" valType="str"/>
+        <Param name="text" updates="constant" val="+" valType="str"/>
+        <Param name="startType" updates="None" val="time (s)" valType="str"/>
+        <Param name="ori" updates="constant" val="0" valType="code"/>
+        <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
+        <Param name="startVal" updates="None" val="0.0" valType="code"/>
+        <Param name="font" updates="constant" val="Arial" valType="str"/>
+        <Param name="letterHeight" updates="constant" val="0.2" valType="code"/>
+      </TextComponent>
       <TextComponent name="word">
         <Param name="opacity" updates="constant" val="1" valType="code"/>
         <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
@@ -94,9 +114,9 @@
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="ori" updates="constant" val="0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
-        <Param name="startVal" updates="None" val="0.5" valType="code"/>
+        <Param name="startVal" updates="None" val="1.5" valType="code"/>
         <Param name="font" updates="constant" val="Arial" valType="str"/>
-        <Param name="letterHeight" updates="constant" val="0.2" valType="code"/>
+        <Param name="letterHeight" updates="constant" val="0.15" valType="code"/>
       </TextComponent>
       <KeyboardComponent name="resp">
         <Param name="correctAns" updates="constant" val="$corrAns" valType="str"/>
@@ -110,7 +130,7 @@
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="allowedKeys" updates="constant" val="'left', 'down', 'right'" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
-        <Param name="startVal" updates="None" val="0.5" valType="code"/>
+        <Param name="startVal" updates="None" val="1.5" valType="code"/>
         <Param name="store" updates="constant" val="last key" valType="str"/>
         <Param name="syncScreenRefresh" updates="constant" val="True" valType="bool"/>
       </KeyboardComponent>
@@ -134,7 +154,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0" valType="code"/>
         <Param name="font" updates="constant" val="Arial" valType="str"/>
-        <Param name="letterHeight" updates="constant" val="0.1" valType="code"/>
+        <Param name="letterHeight" updates="constant" val="0.07" valType="code"/>
       </TextComponent>
       <KeyboardComponent name="ready">
         <Param name="correctAns" updates="constant" val="thisTrial.corrAns" valType="str"/>
@@ -195,7 +215,7 @@
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="startVal" updates="None" val="0.0" valType="code"/>
         <Param name="font" updates="constant" val="Arial" valType="str"/>
-        <Param name="letterHeight" updates="constant" val="0.1" valType="code"/>
+        <Param name="letterHeight" updates="constant" val="0.07" valType="code"/>
       </TextComponent>
       <KeyboardComponent name="ready1">
         <Param name="correctAns" updates="constant" val="" valType="str"/>
@@ -227,7 +247,7 @@
       <Param name="nReps" updates="None" val="len(block_ranges_practice)" valType="code"/>
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
       <Param name="conditions" updates="None" val="None" valType="str"/>
-      <Param name="Selected rows" updates="None" val="" valType="code"/>
+      <Param name="Selected rows" updates="None" val="" valType="str"/>
     </LoopInitiator>
     <LoopInitiator loopType="TrialHandler" name="practice">
       <Param name="conditionsFile" updates="None" val="practice_trials.csv" valType="str"/>
@@ -264,7 +284,7 @@
       <Param name="loopType" updates="None" val="random" valType="str"/>
       <Param name="nReps" updates="None" val="1" valType="num"/>
       <Param name="endPoints" updates="None" val="[1, 2]" valType="num"/>
-      <Param name="conditions" updates="None" val="[{'text': u'positiva1', 'condition': u'positive', 'corrAns': u'right', 'letterColor': u'blue'}, {'text': u'negativa1', 'condition': u'negative', 'corrAns': u'right', 'letterColor': u'blue'}, {'text': u'neutral1', 'condition': u'neutral', 'corrAns': u'right', 'letterColor': u'blue'}, {'text': u'positiva2', 'condition': u'positive', 'corrAns': u'down', 'letterColor': u'green'}, {'text': u'negativa2', 'condition': u'negative', 'corrAns': u'down', 'letterColor': u'green'}, {'text': u'neutral2', 'condition': u'neutral', 'corrAns': u'down', 'letterColor': u'green'}, {'text': u'positiva3', 'condition': u'positive', 'corrAns': u'left', 'letterColor': u'red'}, {'text': u'negativa3', 'condition': u'negative', 'corrAns': u'left', 'letterColor': u'red'}, {'text': u'neutral3', 'condition': u'neutral', 'corrAns': u'left', 'letterColor': u'red'}, {'text': u'positiva4', 'condition': u'positive', 'corrAns': u'right', 'letterColor': u'blue'}, {'text': u'negativa4', 'condition': u'negative', 'corrAns': u'right', 'letterColor': u'blue'}, {'text': u'neutral4', 'condition': u'neutral', 'corrAns': u'right', 'letterColor': u'blue'}, {'text': u'positiva5', 'condition': u'positive', 'corrAns': u'down', 'letterColor': u'green'}, {'text': u'negativa5', 'condition': u'negative', 'corrAns': u'down', 'letterColor': u'green'}, {'text': u'neutral5', 'condition': u'neutral', 'corrAns': u'down', 'letterColor': u'green'}, {'text': u'positiva6', 'condition': u'positive', 'corrAns': u'left', 'letterColor': u'red'}, {'text': u'negativa6', 'condition': u'negative', 'corrAns': u'left', 'letterColor': u'red'}, {'text': u'neutral6', 'condition': u'neutral', 'corrAns': u'left', 'letterColor': u'red'}]" valType="str"/>
+      <Param name="conditions" updates="None" val="[{'text': u'positiva1', 'letterColor': u'blue', 'corrAns': u'right', 'condition': u'positive'}, {'text': u'negativa1', 'letterColor': u'blue', 'corrAns': u'right', 'condition': u'negative'}, {'text': u'neutral1', 'letterColor': u'blue', 'corrAns': u'right', 'condition': u'neutral'}, {'text': u'positiva2', 'letterColor': u'green', 'corrAns': u'down', 'condition': u'positive'}, {'text': u'negativa2', 'letterColor': u'green', 'corrAns': u'down', 'condition': u'negative'}, {'text': u'neutral2', 'letterColor': u'green', 'corrAns': u'down', 'condition': u'neutral'}, {'text': u'positiva3', 'letterColor': u'red', 'corrAns': u'left', 'condition': u'positive'}, {'text': u'negativa3', 'letterColor': u'red', 'corrAns': u'left', 'condition': u'negative'}, {'text': u'neutral3', 'letterColor': u'red', 'corrAns': u'left', 'condition': u'neutral'}, {'text': u'positiva4', 'letterColor': u'blue', 'corrAns': u'right', 'condition': u'positive'}, {'text': u'negativa4', 'letterColor': u'blue', 'corrAns': u'right', 'condition': u'negative'}, {'text': u'neutral4', 'letterColor': u'blue', 'corrAns': u'right', 'condition': u'neutral'}, {'text': u'positiva5', 'letterColor': u'green', 'corrAns': u'down', 'condition': u'positive'}, {'text': u'negativa5', 'letterColor': u'green', 'corrAns': u'down', 'condition': u'negative'}, {'text': u'neutral5', 'letterColor': u'green', 'corrAns': u'down', 'condition': u'neutral'}, {'text': u'positiva6', 'letterColor': u'red', 'corrAns': u'left', 'condition': u'positive'}, {'text': u'negativa6', 'letterColor': u'red', 'corrAns': u'left', 'condition': u'negative'}, {'text': u'neutral6', 'letterColor': u'red', 'corrAns': u'left', 'condition': u'neutral'}]" valType="str"/>
       <Param name="Selected rows" updates="None" val="$block_ranges_exp.pop()" valType="str"/>
     </LoopInitiator>
     <Routine name="trial"/>

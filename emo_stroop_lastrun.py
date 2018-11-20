@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy2 Experiment Builder (v1.85.6),
-    on Wed Sep 26 16:00:20 2018
+    on Tue Nov 20 12:05:57 2018
 If you publish work using this script please cite the PsychoPy publications:
     Peirce, JW (2007) PsychoPy - Psychophysics software in Python.
         Journal of Neuroscience Methods, 162(1-2), 8-13.
@@ -40,7 +40,7 @@ filename = _thisDir + os.sep + u'data' + os.sep + '%s_%s' % (expInfo['participan
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
     extraInfo=expInfo, runtimeInfo=None,
-    originPath=u'/Users/MBP/Box Sync/Research/Consultation services/PHSU/Design and stats consultation/Consult Eliut/Suicide and Emotional Regulation Project/Emotional Stroop/emo_stroop.psyexp',
+    originPath=u'/Users/MBP/Box Sync/PHSU/Design and stats consultation/Consult Eliut/Suicide and Emotional Regulation Project/Emotional Stroop Task/emo_stroop.psyexp',
     savePickle=True, saveWideText=True,
     dataFileName=filename)
 # save a log file for detail verbose info
@@ -53,7 +53,7 @@ endExpNow = False  # flag for 'escape' or other condition => quit the exp
 
 # Setup the Window
 win = visual.Window(
-    size=(1440, 900), fullscr=True, screen=0,
+    size=(1920, 1200), fullscr=True, screen=0,
     allowGUI=False, allowStencil=False,
     monitor='testMonitor', color='black', colorSpace='rgb',
     blendMode='avg', useFBO=True,
@@ -86,18 +86,24 @@ instructPracticeClock = core.Clock()
 instr1 = visual.TextStim(win=win, name='instr1',
     text=u'Recuerda, ignora la palabra.\n\nPresiona:\nIzquierda para letras rojas\nAbajo para letras verdes\nDerecha para letras azules\n\nVamos a comenzar con unos ejercicios de pr\xe1ctica\n\nPresiona cualquier tecla para comenzar',
     font='Arial',
-    pos=[0, 0], height=0.1, wrapWidth=None, ori=0, 
+    pos=[0, 0], height=0.07, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1,
     depth=0.0);
 
 # Initialize components for Routine "trial"
 trialClock = core.Clock()
+fixation_cross = visual.TextStim(win=win, name='fixation_cross',
+    text='+',
+    font='Arial',
+    pos=(0, 0), height=0.2, wrapWidth=None, ori=0, 
+    color='white', colorSpace='rgb', opacity=1,
+    depth=0.0);
 word = visual.TextStim(win=win, name='word',
     text='default text',
     font='Arial',
-    pos=[0, 0], height=0.2, wrapWidth=None, ori=0, 
+    pos=[0, 0], height=0.15, wrapWidth=None, ori=0, 
     color=1.0, colorSpace='rgb', opacity=1,
-    depth=0.0);
+    depth=-1.0);
 
 # Initialize components for Routine "feedback"
 feedbackClock = core.Clock()
@@ -115,18 +121,24 @@ instructClock = core.Clock()
 instrText = visual.TextStim(win=win, name='instrText',
     text=u'\xbfListo para comenzar el experimento real?\n\nRecuerda, ignora la palabra en s\xed misma.\n\nPresiona:\nIzquierda para letras rojas\nAbajo para letras verdes\nDerecha para letras azules\n\nPresiona cualquier tecla para comenzar',
     font='Arial',
-    pos=[0, 0], height=0.1, wrapWidth=None, ori=0, 
+    pos=[0, 0], height=0.07, wrapWidth=None, ori=0, 
     color=[1, 1, 1], colorSpace='rgb', opacity=1,
     depth=0.0);
 
 # Initialize components for Routine "trial"
 trialClock = core.Clock()
+fixation_cross = visual.TextStim(win=win, name='fixation_cross',
+    text='+',
+    font='Arial',
+    pos=(0, 0), height=0.2, wrapWidth=None, ori=0, 
+    color='white', colorSpace='rgb', opacity=1,
+    depth=0.0);
 word = visual.TextStim(win=win, name='word',
     text='default text',
     font='Arial',
-    pos=[0, 0], height=0.2, wrapWidth=None, ori=0, 
+    pos=[0, 0], height=0.15, wrapWidth=None, ori=0, 
     color=1.0, colorSpace='rgb', opacity=1,
-    depth=0.0);
+    depth=-1.0);
 
 # Initialize components for Routine "thanks"
 thanksClock = core.Clock()
@@ -304,7 +316,7 @@ for thisTrial_blocks_practice in trial_blocks_practice:
         word.setText(text)
         resp = event.BuilderKeyResponse()
         # keep track of which components have finished
-        trialComponents = [word, resp]
+        trialComponents = [fixation_cross, word, resp]
         for thisComponent in trialComponents:
             if hasattr(thisComponent, 'status'):
                 thisComponent.status = NOT_STARTED
@@ -316,15 +328,25 @@ for thisTrial_blocks_practice in trial_blocks_practice:
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
             
+            # *fixation_cross* updates
+            if t >= 0.0 and fixation_cross.status == NOT_STARTED:
+                # keep track of start time/frame for later
+                fixation_cross.tStart = t
+                fixation_cross.frameNStart = frameN  # exact frame index
+                fixation_cross.setAutoDraw(True)
+            frameRemains = 0.0 + 1.0- win.monitorFramePeriod * 0.75  # most of one frame period left
+            if fixation_cross.status == STARTED and t >= frameRemains:
+                fixation_cross.setAutoDraw(False)
+            
             # *word* updates
-            if t >= 0.5 and word.status == NOT_STARTED:
+            if t >= 1.5 and word.status == NOT_STARTED:
                 # keep track of start time/frame for later
                 word.tStart = t
                 word.frameNStart = frameN  # exact frame index
                 word.setAutoDraw(True)
             
             # *resp* updates
-            if t >= 0.5 and resp.status == NOT_STARTED:
+            if t >= 1.5 and resp.status == NOT_STARTED:
                 # keep track of start time/frame for later
                 resp.tStart = t
                 resp.frameNStart = frameN  # exact frame index
@@ -588,7 +610,7 @@ for thisTrial_blocks_exp in trial_blocks_exp:
         word.setText(text)
         resp = event.BuilderKeyResponse()
         # keep track of which components have finished
-        trialComponents = [word, resp]
+        trialComponents = [fixation_cross, word, resp]
         for thisComponent in trialComponents:
             if hasattr(thisComponent, 'status'):
                 thisComponent.status = NOT_STARTED
@@ -600,15 +622,25 @@ for thisTrial_blocks_exp in trial_blocks_exp:
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
             
+            # *fixation_cross* updates
+            if t >= 0.0 and fixation_cross.status == NOT_STARTED:
+                # keep track of start time/frame for later
+                fixation_cross.tStart = t
+                fixation_cross.frameNStart = frameN  # exact frame index
+                fixation_cross.setAutoDraw(True)
+            frameRemains = 0.0 + 1.0- win.monitorFramePeriod * 0.75  # most of one frame period left
+            if fixation_cross.status == STARTED and t >= frameRemains:
+                fixation_cross.setAutoDraw(False)
+            
             # *word* updates
-            if t >= 0.5 and word.status == NOT_STARTED:
+            if t >= 1.5 and word.status == NOT_STARTED:
                 # keep track of start time/frame for later
                 word.tStart = t
                 word.frameNStart = frameN  # exact frame index
                 word.setAutoDraw(True)
             
             # *resp* updates
-            if t >= 0.5 and resp.status == NOT_STARTED:
+            if t >= 1.5 and resp.status == NOT_STARTED:
                 # keep track of start time/frame for later
                 resp.tStart = t
                 resp.frameNStart = frameN  # exact frame index
