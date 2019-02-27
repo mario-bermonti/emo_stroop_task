@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy2 Experiment Builder (v1.85.6),
-    on Tue Nov 20 12:05:57 2018
+    on Wed Feb 27 14:55:49 2019
 If you publish work using this script please cite the PsychoPy publications:
     Peirce, JW (2007) PsychoPy - Psychophysics software in Python.
         Journal of Neuroscience Methods, 162(1-2), 8-13.
@@ -53,7 +53,7 @@ endExpNow = False  # flag for 'escape' or other condition => quit the exp
 
 # Setup the Window
 win = visual.Window(
-    size=(1920, 1200), fullscr=True, screen=0,
+    size=(1920, 1080), fullscr=True, screen=0,
     allowGUI=False, allowStencil=False,
     monitor='testMonitor', color='black', colorSpace='rgb',
     blendMode='avg', useFBO=True,
@@ -269,227 +269,195 @@ for thisComponent in instructPracticeComponents:
 routineTimer.reset()
 
 # set up handler to look after randomisation of conditions etc
-trial_blocks_practice = data.TrialHandler(nReps=len(block_ranges_practice), method='random', 
+practice = data.TrialHandler(nReps=4.0, method='random', 
     extraInfo=expInfo, originPath=-1,
-    trialList=[None],
-    seed=None, name='trial_blocks_practice')
-thisExp.addLoop(trial_blocks_practice)  # add the loop to the experiment
-thisTrial_blocks_practice = trial_blocks_practice.trialList[0]  # so we can initialise stimuli with some values
-# abbreviate parameter names if possible (e.g. rgb = thisTrial_blocks_practice.rgb)
-if thisTrial_blocks_practice != None:
-    for paramName in thisTrial_blocks_practice.keys():
-        exec(paramName + '= thisTrial_blocks_practice.' + paramName)
+    trialList=data.importConditions('practice_trials.csv'),
+    seed=None, name='practice')
+thisExp.addLoop(practice)  # add the loop to the experiment
+thisPractice = practice.trialList[0]  # so we can initialise stimuli with some values
+# abbreviate parameter names if possible (e.g. rgb = thisPractice.rgb)
+if thisPractice != None:
+    for paramName in thisPractice.keys():
+        exec(paramName + '= thisPractice.' + paramName)
 
-for thisTrial_blocks_practice in trial_blocks_practice:
-    currentLoop = trial_blocks_practice
-    # abbreviate parameter names if possible (e.g. rgb = thisTrial_blocks_practice.rgb)
-    if thisTrial_blocks_practice != None:
-        for paramName in thisTrial_blocks_practice.keys():
-            exec(paramName + '= thisTrial_blocks_practice.' + paramName)
-    
-    # set up handler to look after randomisation of conditions etc
-    practice = data.TrialHandler(nReps=1.0, method='random', 
-        extraInfo=expInfo, originPath=-1,
-        trialList=data.importConditions('practice_trials.csv', selection=block_ranges_practice.pop()),
-        seed=None, name='practice')
-    thisExp.addLoop(practice)  # add the loop to the experiment
-    thisPractice = practice.trialList[0]  # so we can initialise stimuli with some values
+for thisPractice in practice:
+    currentLoop = practice
     # abbreviate parameter names if possible (e.g. rgb = thisPractice.rgb)
     if thisPractice != None:
         for paramName in thisPractice.keys():
             exec(paramName + '= thisPractice.' + paramName)
     
-    for thisPractice in practice:
-        currentLoop = practice
-        # abbreviate parameter names if possible (e.g. rgb = thisPractice.rgb)
-        if thisPractice != None:
-            for paramName in thisPractice.keys():
-                exec(paramName + '= thisPractice.' + paramName)
-        
-        # ------Prepare to start Routine "trial"-------
-        t = 0
-        trialClock.reset()  # clock
-        frameN = -1
-        continueRoutine = True
-        # update component parameters for each repeat
-        word.setColor(letterColor, colorSpace='rgb')
-        word.setText(text)
-        resp = event.BuilderKeyResponse()
-        # keep track of which components have finished
-        trialComponents = [fixation_cross, word, resp]
-        for thisComponent in trialComponents:
-            if hasattr(thisComponent, 'status'):
-                thisComponent.status = NOT_STARTED
-        
-        # -------Start Routine "trial"-------
-        while continueRoutine:
-            # get current time
-            t = trialClock.getTime()
-            frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-            # update/draw components on each frame
-            
-            # *fixation_cross* updates
-            if t >= 0.0 and fixation_cross.status == NOT_STARTED:
-                # keep track of start time/frame for later
-                fixation_cross.tStart = t
-                fixation_cross.frameNStart = frameN  # exact frame index
-                fixation_cross.setAutoDraw(True)
-            frameRemains = 0.0 + 1.0- win.monitorFramePeriod * 0.75  # most of one frame period left
-            if fixation_cross.status == STARTED and t >= frameRemains:
-                fixation_cross.setAutoDraw(False)
-            
-            # *word* updates
-            if t >= 1.5 and word.status == NOT_STARTED:
-                # keep track of start time/frame for later
-                word.tStart = t
-                word.frameNStart = frameN  # exact frame index
-                word.setAutoDraw(True)
-            
-            # *resp* updates
-            if t >= 1.5 and resp.status == NOT_STARTED:
-                # keep track of start time/frame for later
-                resp.tStart = t
-                resp.frameNStart = frameN  # exact frame index
-                resp.status = STARTED
-                # keyboard checking is just starting
-                win.callOnFlip(resp.clock.reset)  # t=0 on next screen flip
-                event.clearEvents(eventType='keyboard')
-            if resp.status == STARTED:
-                theseKeys = event.getKeys(keyList=['left', 'down', 'right'])
-                
-                # check for quit:
-                if "escape" in theseKeys:
-                    endExpNow = True
-                if len(theseKeys) > 0:  # at least one key was pressed
-                    resp.keys = theseKeys[-1]  # just the last key pressed
-                    resp.rt = resp.clock.getTime()
-                    # was this 'correct'?
-                    if (resp.keys == str(corrAns)) or (resp.keys == corrAns):
-                        resp.corr = 1
-                    else:
-                        resp.corr = 0
-                    # a response ends the routine
-                    continueRoutine = False
-            
-            # check if all components have finished
-            if not continueRoutine:  # a component has requested a forced-end of Routine
-                break
-            continueRoutine = False  # will revert to True if at least one component still running
-            for thisComponent in trialComponents:
-                if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-                    continueRoutine = True
-                    break  # at least one component has not yet finished
-            
-            # check for quit (the Esc key)
-            if endExpNow or event.getKeys(keyList=["escape"]):
-                core.quit()
-            
-            # refresh the screen
-            if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-                win.flip()
-        
-        # -------Ending Routine "trial"-------
-        for thisComponent in trialComponents:
-            if hasattr(thisComponent, "setAutoDraw"):
-                thisComponent.setAutoDraw(False)
-        # check responses
-        if resp.keys in ['', [], None]:  # No response was made
-            resp.keys=None
-            # was no response the correct answer?!
-            if str(corrAns).lower() == 'none':
-               resp.corr = 1  # correct non-response
-            else:
-               resp.corr = 0  # failed to respond (incorrectly)
-        # store data for practice (TrialHandler)
-        practice.addData('resp.keys',resp.keys)
-        practice.addData('resp.corr', resp.corr)
-        if resp.keys != None:  # we had a response
-            practice.addData('resp.rt', resp.rt)
-        # the Routine "trial" was not non-slip safe, so reset the non-slip timer
-        routineTimer.reset()
-        
-        # ------Prepare to start Routine "feedback"-------
-        t = 0
-        feedbackClock.reset()  # clock
-        frameN = -1
-        continueRoutine = True
-        routineTimer.add(1.000000)
-        # update component parameters for each repeat
-        if resp.corr:#stored on last run routine
-          msg=u"¡Correcto!"
-        else:
-          msg=u"¡Error!"
-        feedback_2.setText(msg)
-        # keep track of which components have finished
-        feedbackComponents = [feedback_2]
-        for thisComponent in feedbackComponents:
-            if hasattr(thisComponent, 'status'):
-                thisComponent.status = NOT_STARTED
-        
-        # -------Start Routine "feedback"-------
-        while continueRoutine and routineTimer.getTime() > 0:
-            # get current time
-            t = feedbackClock.getTime()
-            frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-            # update/draw components on each frame
-            
-            
-            # *feedback_2* updates
-            if t >= 0.0 and feedback_2.status == NOT_STARTED:
-                # keep track of start time/frame for later
-                feedback_2.tStart = t
-                feedback_2.frameNStart = frameN  # exact frame index
-                feedback_2.setAutoDraw(True)
-            frameRemains = 0.0 + 1.0- win.monitorFramePeriod * 0.75  # most of one frame period left
-            if feedback_2.status == STARTED and t >= frameRemains:
-                feedback_2.setAutoDraw(False)
-            
-            # check if all components have finished
-            if not continueRoutine:  # a component has requested a forced-end of Routine
-                break
-            continueRoutine = False  # will revert to True if at least one component still running
-            for thisComponent in feedbackComponents:
-                if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-                    continueRoutine = True
-                    break  # at least one component has not yet finished
-            
-            # check for quit (the Esc key)
-            if endExpNow or event.getKeys(keyList=["escape"]):
-                core.quit()
-            
-            # refresh the screen
-            if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-                win.flip()
-        
-        # -------Ending Routine "feedback"-------
-        for thisComponent in feedbackComponents:
-            if hasattr(thisComponent, "setAutoDraw"):
-                thisComponent.setAutoDraw(False)
-        
-        thisExp.nextEntry()
-        
-    # completed 1.0 repeats of 'practice'
+    # ------Prepare to start Routine "trial"-------
+    t = 0
+    trialClock.reset()  # clock
+    frameN = -1
+    continueRoutine = True
+    # update component parameters for each repeat
+    word.setColor(letterColor, colorSpace='rgb')
+    word.setText(text)
+    resp = event.BuilderKeyResponse()
+    # keep track of which components have finished
+    trialComponents = [fixation_cross, word, resp]
+    for thisComponent in trialComponents:
+        if hasattr(thisComponent, 'status'):
+            thisComponent.status = NOT_STARTED
     
-    # get names of stimulus parameters
-    if practice.trialList in ([], [None], None):
-        params = []
+    # -------Start Routine "trial"-------
+    while continueRoutine:
+        # get current time
+        t = trialClock.getTime()
+        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+        # update/draw components on each frame
+        
+        # *fixation_cross* updates
+        if t >= 0.0 and fixation_cross.status == NOT_STARTED:
+            # keep track of start time/frame for later
+            fixation_cross.tStart = t
+            fixation_cross.frameNStart = frameN  # exact frame index
+            fixation_cross.setAutoDraw(True)
+        frameRemains = 0.0 + 1.0- win.monitorFramePeriod * 0.75  # most of one frame period left
+        if fixation_cross.status == STARTED and t >= frameRemains:
+            fixation_cross.setAutoDraw(False)
+        
+        # *word* updates
+        if t >= 1.5 and word.status == NOT_STARTED:
+            # keep track of start time/frame for later
+            word.tStart = t
+            word.frameNStart = frameN  # exact frame index
+            word.setAutoDraw(True)
+        
+        # *resp* updates
+        if t >= 1.5 and resp.status == NOT_STARTED:
+            # keep track of start time/frame for later
+            resp.tStart = t
+            resp.frameNStart = frameN  # exact frame index
+            resp.status = STARTED
+            # keyboard checking is just starting
+            win.callOnFlip(resp.clock.reset)  # t=0 on next screen flip
+            event.clearEvents(eventType='keyboard')
+        if resp.status == STARTED:
+            theseKeys = event.getKeys(keyList=['left', 'down', 'right'])
+            
+            # check for quit:
+            if "escape" in theseKeys:
+                endExpNow = True
+            if len(theseKeys) > 0:  # at least one key was pressed
+                resp.keys = theseKeys[-1]  # just the last key pressed
+                resp.rt = resp.clock.getTime()
+                # was this 'correct'?
+                if (resp.keys == str(corrAns)) or (resp.keys == corrAns):
+                    resp.corr = 1
+                else:
+                    resp.corr = 0
+                # a response ends the routine
+                continueRoutine = False
+        
+        # check if all components have finished
+        if not continueRoutine:  # a component has requested a forced-end of Routine
+            break
+        continueRoutine = False  # will revert to True if at least one component still running
+        for thisComponent in trialComponents:
+            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                continueRoutine = True
+                break  # at least one component has not yet finished
+        
+        # check for quit (the Esc key)
+        if endExpNow or event.getKeys(keyList=["escape"]):
+            core.quit()
+        
+        # refresh the screen
+        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+            win.flip()
+    
+    # -------Ending Routine "trial"-------
+    for thisComponent in trialComponents:
+        if hasattr(thisComponent, "setAutoDraw"):
+            thisComponent.setAutoDraw(False)
+    # check responses
+    if resp.keys in ['', [], None]:  # No response was made
+        resp.keys=None
+        # was no response the correct answer?!
+        if str(corrAns).lower() == 'none':
+           resp.corr = 1  # correct non-response
+        else:
+           resp.corr = 0  # failed to respond (incorrectly)
+    # store data for practice (TrialHandler)
+    practice.addData('resp.keys',resp.keys)
+    practice.addData('resp.corr', resp.corr)
+    if resp.keys != None:  # we had a response
+        practice.addData('resp.rt', resp.rt)
+    # the Routine "trial" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset()
+    
+    # ------Prepare to start Routine "feedback"-------
+    t = 0
+    feedbackClock.reset()  # clock
+    frameN = -1
+    continueRoutine = True
+    routineTimer.add(1.000000)
+    # update component parameters for each repeat
+    if resp.corr:#stored on last run routine
+      msg=u"¡Correcto!"
     else:
-        params = practice.trialList[0].keys()
-    # save data for this loop
-    practice.saveAsExcel(filename + '.xlsx', sheetName='practice',
-        stimOut=params,
-        dataOut=['n','all_mean','all_std', 'all_raw'])
+      msg=u"¡Error!"
+    feedback_2.setText(msg)
+    # keep track of which components have finished
+    feedbackComponents = [feedback_2]
+    for thisComponent in feedbackComponents:
+        if hasattr(thisComponent, 'status'):
+            thisComponent.status = NOT_STARTED
+    
+    # -------Start Routine "feedback"-------
+    while continueRoutine and routineTimer.getTime() > 0:
+        # get current time
+        t = feedbackClock.getTime()
+        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
+        # update/draw components on each frame
+        
+        
+        # *feedback_2* updates
+        if t >= 0.0 and feedback_2.status == NOT_STARTED:
+            # keep track of start time/frame for later
+            feedback_2.tStart = t
+            feedback_2.frameNStart = frameN  # exact frame index
+            feedback_2.setAutoDraw(True)
+        frameRemains = 0.0 + 1.0- win.monitorFramePeriod * 0.75  # most of one frame period left
+        if feedback_2.status == STARTED and t >= frameRemains:
+            feedback_2.setAutoDraw(False)
+        
+        # check if all components have finished
+        if not continueRoutine:  # a component has requested a forced-end of Routine
+            break
+        continueRoutine = False  # will revert to True if at least one component still running
+        for thisComponent in feedbackComponents:
+            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
+                continueRoutine = True
+                break  # at least one component has not yet finished
+        
+        # check for quit (the Esc key)
+        if endExpNow or event.getKeys(keyList=["escape"]):
+            core.quit()
+        
+        # refresh the screen
+        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
+            win.flip()
+    
+    # -------Ending Routine "feedback"-------
+    for thisComponent in feedbackComponents:
+        if hasattr(thisComponent, "setAutoDraw"):
+            thisComponent.setAutoDraw(False)
+    
     thisExp.nextEntry()
     
-# completed len(block_ranges_practice) repeats of 'trial_blocks_practice'
+# completed 4.0 repeats of 'practice'
 
 # get names of stimulus parameters
-if trial_blocks_practice.trialList in ([], [None], None):
+if practice.trialList in ([], [None], None):
     params = []
 else:
-    params = trial_blocks_practice.trialList[0].keys()
+    params = practice.trialList[0].keys()
 # save data for this loop
-trial_blocks_practice.saveAsExcel(filename + '.xlsx', sheetName='trial_blocks_practice',
+practice.saveAsExcel(filename + '.xlsx', sheetName='practice',
     stimOut=params,
     dataOut=['n','all_mean','all_std', 'all_raw'])
 

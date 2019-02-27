@@ -31,24 +31,24 @@
       <CodeComponent name="message">
         <Param name="Begin Experiment" updates="constant" val="#msg variable just needs some value at start&amp;#10;msg=''" valType="extendedCode"/>
         <Param name="name" updates="None" val="message" valType="code"/>
-        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin Routine" updates="constant" val="if resp.corr:#stored on last run routine&amp;#10;  msg=u&quot;¡Correcto!&quot;&amp;#10;else:&amp;#10;  msg=u&quot;¡Error!&quot;" valType="extendedCode"/>
         <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
       </CodeComponent>
       <TextComponent name="feedback_2">
         <Param name="opacity" updates="constant" val="1" valType="code"/>
         <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
         <Param name="name" updates="constant" val="feedback_2" valType="code"/>
-        <Param name="color" updates="constant" val="$[1,1,1]" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="code"/>
+        <Param name="color" updates="constant" val="$[1,1,1]" valType="str"/>
+        <Param name="text" updates="set every repeat" val="$msg" valType="str"/>
         <Param name="stopVal" updates="constant" val="1.0" valType="code"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
         <Param name="pos" updates="constant" val="[0, 0]" valType="code"/>
         <Param name="flip" updates="constant" val="" valType="str"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
-        <Param name="text" updates="set every repeat" val="$msg" valType="str"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="ori" updates="constant" val="0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
@@ -61,20 +61,20 @@
       <CodeComponent name="code_component">
         <Param name="Begin Experiment" updates="constant" val="import random&amp;#10;import pandas as pd&amp;#10;block_ranges = pd.read_csv('choose_blocks.csv')&amp;#10;&amp;#10;# Prepare practice blocks&amp;#10;block_ranges_practice = list(block_ranges.choose_blocks_practice)&amp;#10;print(block_ranges_practice)&amp;#10;random.shuffle(block_ranges_practice)&amp;#10;&amp;#10;# Prepare experiment blocks&amp;#10;block_ranges_exp = list(block_ranges.choose_blocks_exp)&amp;#10;random.shuffle(block_ranges_exp)&amp;#10;print (2, block_ranges_exp)" valType="extendedCode"/>
         <Param name="name" updates="None" val="code_component" valType="code"/>
-        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
       </CodeComponent>
     </Routine>
     <Routine name="set_block">
       <CodeComponent name="code">
         <Param name="Begin Experiment" updates="constant" val="import random&amp;#10;import pandas as pd&amp;#10;block_ranges = pd.read_csv('choose_blocks.csv')&amp;#10;&amp;#10;# Prepare practice blocks&amp;#10;block_ranges_practice = list(block_ranges.choose_blocks_practice)&amp;#10;print(block_ranges_practice)&amp;#10;random.shuffle(block_ranges_practice)&amp;#10;&amp;#10;&amp;#10;# Prepare experiment blocks&amp;#10;block_ranges_exp = list(block_ranges.choose_blocks_exp)&amp;#10;random.shuffle(block_ranges_exp)&amp;#10;print (2, block_ranges_exp)" valType="extendedCode"/>
         <Param name="name" updates="None" val="code" valType="code"/>
-        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
         <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="End Experiment" updates="constant" val="" valType="extendedCode"/>
+        <Param name="Each Frame" updates="constant" val="" valType="extendedCode"/>
       </CodeComponent>
     </Routine>
     <Routine name="trial">
@@ -82,15 +82,15 @@
         <Param name="opacity" updates="constant" val="1" valType="code"/>
         <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
         <Param name="name" updates="None" val="fixation_cross" valType="code"/>
-        <Param name="color" updates="constant" val="white" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="code"/>
+        <Param name="color" updates="constant" val="white" valType="str"/>
+        <Param name="text" updates="constant" val="+" valType="str"/>
         <Param name="stopVal" updates="constant" val="1.0" valType="code"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
         <Param name="pos" updates="constant" val="(0, 0)" valType="code"/>
         <Param name="flip" updates="constant" val="" valType="str"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
-        <Param name="text" updates="constant" val="+" valType="str"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="ori" updates="constant" val="0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
@@ -102,15 +102,15 @@
         <Param name="opacity" updates="constant" val="1" valType="code"/>
         <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
         <Param name="name" updates="constant" val="word" valType="code"/>
-        <Param name="color" updates="set every repeat" val="$letterColor" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="code"/>
+        <Param name="color" updates="set every repeat" val="$letterColor" valType="str"/>
+        <Param name="text" updates="set every repeat" val="$text" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
         <Param name="pos" updates="constant" val="[0, 0]" valType="code"/>
         <Param name="flip" updates="constant" val="" valType="str"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
-        <Param name="text" updates="set every repeat" val="$text" valType="str"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="ori" updates="constant" val="0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
@@ -128,7 +128,7 @@
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="discard previous" updates="constant" val="True" valType="bool"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
-        <Param name="allowedKeys" updates="constant" val="'left', 'down', 'right'" valType="code"/>
+        <Param name="allowedKeys" updates="constant" val="'f', 'j', 'k'" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="startVal" updates="None" val="1.5" valType="code"/>
         <Param name="store" updates="constant" val="last key" valType="str"/>
@@ -140,15 +140,15 @@
         <Param name="opacity" updates="constant" val="1" valType="code"/>
         <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
         <Param name="name" updates="constant" val="instrText" valType="code"/>
-        <Param name="color" updates="constant" val="$[1, 1, 1]" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="code"/>
+        <Param name="color" updates="constant" val="$[1, 1, 1]" valType="str"/>
+        <Param name="text" updates="constant" val="¿Listo para comenzar el experimento real?&amp;#10;&amp;#10;Recuerda, ignora la palabra en sí misma.&amp;#10;&amp;#10;Presiona:&amp;#10;Izquierda para letras rojas&amp;#10;Abajo para letras verdes&amp;#10;Derecha para letras azules&amp;#10;&amp;#10;Presiona cualquier tecla para comenzar" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
         <Param name="pos" updates="constant" val="[0, 0]" valType="code"/>
         <Param name="flip" updates="constant" val="" valType="str"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
-        <Param name="text" updates="constant" val="¿Listo para comenzar el experimento real?&amp;#10;&amp;#10;Recuerda, ignora la palabra en sí misma.&amp;#10;&amp;#10;Presiona:&amp;#10;Izquierda para letras rojas&amp;#10;Abajo para letras verdes&amp;#10;Derecha para letras azules&amp;#10;&amp;#10;Presiona cualquier tecla para comenzar" valType="str"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="ori" updates="constant" val="0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
@@ -178,15 +178,15 @@
         <Param name="opacity" updates="constant" val="1" valType="code"/>
         <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
         <Param name="name" updates="constant" val="thanksText" valType="code"/>
-        <Param name="color" updates="constant" val="$[1, 1, 1]" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="code"/>
+        <Param name="color" updates="constant" val="$[1, 1, 1]" valType="str"/>
+        <Param name="text" updates="constant" val="¡Completaste el experimento!&amp;#10;&amp;#10;¡Muchas gracias!" valType="str"/>
         <Param name="stopVal" updates="constant" val="2.0" valType="code"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
         <Param name="pos" updates="constant" val="[0, 0]" valType="code"/>
         <Param name="flip" updates="constant" val="" valType="str"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
-        <Param name="text" updates="constant" val="¡Completaste el experimento!&amp;#10;&amp;#10;¡Muchas gracias!" valType="str"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="ori" updates="constant" val="0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
@@ -201,15 +201,15 @@
         <Param name="opacity" updates="constant" val="1" valType="code"/>
         <Param name="colorSpace" updates="constant" val="rgb" valType="str"/>
         <Param name="name" updates="constant" val="instr1" valType="code"/>
-        <Param name="color" updates="constant" val="white" valType="str"/>
         <Param name="wrapWidth" updates="constant" val="" valType="code"/>
+        <Param name="color" updates="constant" val="white" valType="str"/>
+        <Param name="text" updates="constant" val="Recuerda, ignora la palabra.&amp;#10;&amp;#10;Presiona:&amp;#10;Izquierda para letras rojas&amp;#10;Abajo para letras verdes&amp;#10;Derecha para letras azules&amp;#10;&amp;#10;Vamos a comenzar con unos ejercicios de práctica&amp;#10;&amp;#10;Presiona cualquier tecla para comenzar" valType="str"/>
         <Param name="stopVal" updates="constant" val="" valType="code"/>
         <Param name="durationEstim" updates="None" val="" valType="code"/>
         <Param name="pos" updates="constant" val="[0, 0]" valType="code"/>
         <Param name="flip" updates="constant" val="" valType="str"/>
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="units" updates="None" val="from exp settings" valType="str"/>
-        <Param name="text" updates="constant" val="Recuerda, ignora la palabra.&amp;#10;&amp;#10;Presiona:&amp;#10;Izquierda para letras rojas&amp;#10;Abajo para letras verdes&amp;#10;Derecha para letras azules&amp;#10;&amp;#10;Vamos a comenzar con unos ejercicios de práctica&amp;#10;&amp;#10;Presiona cualquier tecla para comenzar" valType="str"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
         <Param name="ori" updates="constant" val="0" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
@@ -238,32 +238,20 @@
   <Flow>
     <Routine name="set_trial_blocks"/>
     <Routine name="instructPractice"/>
-    <LoopInitiator loopType="TrialHandler" name="trial_blocks_practice">
-      <Param name="conditionsFile" updates="None" val="" valType="str"/>
-      <Param name="name" updates="None" val="trial_blocks_practice" valType="code"/>
-      <Param name="isTrials" updates="None" val="True" valType="bool"/>
-      <Param name="random seed" updates="None" val="" valType="code"/>
-      <Param name="loopType" updates="None" val="random" valType="str"/>
-      <Param name="nReps" updates="None" val="len(block_ranges_practice)" valType="code"/>
-      <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
-      <Param name="conditions" updates="None" val="None" valType="str"/>
-      <Param name="Selected rows" updates="None" val="" valType="str"/>
-    </LoopInitiator>
     <LoopInitiator loopType="TrialHandler" name="practice">
       <Param name="conditionsFile" updates="None" val="practice_trials.csv" valType="str"/>
       <Param name="name" updates="None" val="practice" valType="code"/>
       <Param name="isTrials" updates="None" val="True" valType="bool"/>
       <Param name="random seed" updates="None" val="" valType="code"/>
       <Param name="loopType" updates="None" val="random" valType="str"/>
-      <Param name="nReps" updates="None" val="1" valType="num"/>
+      <Param name="nReps" updates="None" val="4" valType="num"/>
       <Param name="endPoints" updates="None" val="[0, 1]" valType="num"/>
       <Param name="conditions" updates="None" val="None" valType="str"/>
-      <Param name="Selected rows" updates="None" val="$block_ranges_practice.pop()" valType="str"/>
+      <Param name="Selected rows" updates="None" val="" valType="str"/>
     </LoopInitiator>
     <Routine name="trial"/>
     <Routine name="feedback"/>
     <LoopTerminator name="practice"/>
-    <LoopTerminator name="trial_blocks_practice"/>
     <Routine name="instruct"/>
     <LoopInitiator loopType="TrialHandler" name="trial_blocks_exp">
       <Param name="conditionsFile" updates="None" val="" valType="str"/>
@@ -284,7 +272,7 @@
       <Param name="loopType" updates="None" val="random" valType="str"/>
       <Param name="nReps" updates="None" val="1" valType="num"/>
       <Param name="endPoints" updates="None" val="[1, 2]" valType="num"/>
-      <Param name="conditions" updates="None" val="[{'text': u'positiva1', 'letterColor': u'blue', 'corrAns': u'right', 'condition': u'positive'}, {'text': u'negativa1', 'letterColor': u'blue', 'corrAns': u'right', 'condition': u'negative'}, {'text': u'neutral1', 'letterColor': u'blue', 'corrAns': u'right', 'condition': u'neutral'}, {'text': u'positiva2', 'letterColor': u'green', 'corrAns': u'down', 'condition': u'positive'}, {'text': u'negativa2', 'letterColor': u'green', 'corrAns': u'down', 'condition': u'negative'}, {'text': u'neutral2', 'letterColor': u'green', 'corrAns': u'down', 'condition': u'neutral'}, {'text': u'positiva3', 'letterColor': u'red', 'corrAns': u'left', 'condition': u'positive'}, {'text': u'negativa3', 'letterColor': u'red', 'corrAns': u'left', 'condition': u'negative'}, {'text': u'neutral3', 'letterColor': u'red', 'corrAns': u'left', 'condition': u'neutral'}, {'text': u'positiva4', 'letterColor': u'blue', 'corrAns': u'right', 'condition': u'positive'}, {'text': u'negativa4', 'letterColor': u'blue', 'corrAns': u'right', 'condition': u'negative'}, {'text': u'neutral4', 'letterColor': u'blue', 'corrAns': u'right', 'condition': u'neutral'}, {'text': u'positiva5', 'letterColor': u'green', 'corrAns': u'down', 'condition': u'positive'}, {'text': u'negativa5', 'letterColor': u'green', 'corrAns': u'down', 'condition': u'negative'}, {'text': u'neutral5', 'letterColor': u'green', 'corrAns': u'down', 'condition': u'neutral'}, {'text': u'positiva6', 'letterColor': u'red', 'corrAns': u'left', 'condition': u'positive'}, {'text': u'negativa6', 'letterColor': u'red', 'corrAns': u'left', 'condition': u'negative'}, {'text': u'neutral6', 'letterColor': u'red', 'corrAns': u'left', 'condition': u'neutral'}]" valType="str"/>
+      <Param name="conditions" updates="None" val="[{'text': u'positiva1', 'condition': u'positive', 'corrAns': u'right', 'letterColor': u'blue'}, {'text': u'negativa1', 'condition': u'negative', 'corrAns': u'right', 'letterColor': u'blue'}, {'text': u'neutral1', 'condition': u'neutral', 'corrAns': u'right', 'letterColor': u'blue'}, {'text': u'positiva2', 'condition': u'positive', 'corrAns': u'down', 'letterColor': u'green'}, {'text': u'negativa2', 'condition': u'negative', 'corrAns': u'down', 'letterColor': u'green'}, {'text': u'neutral2', 'condition': u'neutral', 'corrAns': u'down', 'letterColor': u'green'}, {'text': u'positiva3', 'condition': u'positive', 'corrAns': u'left', 'letterColor': u'red'}, {'text': u'negativa3', 'condition': u'negative', 'corrAns': u'left', 'letterColor': u'red'}, {'text': u'neutral3', 'condition': u'neutral', 'corrAns': u'left', 'letterColor': u'red'}, {'text': u'positiva4', 'condition': u'positive', 'corrAns': u'right', 'letterColor': u'blue'}, {'text': u'negativa4', 'condition': u'negative', 'corrAns': u'right', 'letterColor': u'blue'}, {'text': u'neutral4', 'condition': u'neutral', 'corrAns': u'right', 'letterColor': u'blue'}, {'text': u'positiva5', 'condition': u'positive', 'corrAns': u'down', 'letterColor': u'green'}, {'text': u'negativa5', 'condition': u'negative', 'corrAns': u'down', 'letterColor': u'green'}, {'text': u'neutral5', 'condition': u'neutral', 'corrAns': u'down', 'letterColor': u'green'}, {'text': u'positiva6', 'condition': u'positive', 'corrAns': u'left', 'letterColor': u'red'}, {'text': u'negativa6', 'condition': u'negative', 'corrAns': u'left', 'letterColor': u'red'}, {'text': u'neutral6', 'condition': u'neutral', 'corrAns': u'left', 'letterColor': u'red'}]" valType="str"/>
       <Param name="Selected rows" updates="None" val="$block_ranges_exp.pop()" valType="str"/>
     </LoopInitiator>
     <Routine name="trial"/>
