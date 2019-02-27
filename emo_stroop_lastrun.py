@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy2 Experiment Builder (v1.85.6),
-    on Wed Feb 27 14:55:49 2019
+    on Wed Feb 27 15:13:46 2019
 If you publish work using this script please cite the PsychoPy publications:
     Peirce, JW (2007) PsychoPy - Psychophysics software in Python.
         Journal of Neuroscience Methods, 162(1-2), 8-13.
@@ -71,11 +71,6 @@ import random
 import pandas as pd
 block_ranges = pd.read_csv('choose_blocks.csv')
 
-# Prepare practice blocks
-block_ranges_practice = list(block_ranges.choose_blocks_practice)
-print(block_ranges_practice)
-random.shuffle(block_ranges_practice)
-
 # Prepare experiment blocks
 block_ranges_exp = list(block_ranges.choose_blocks_exp)
 random.shuffle(block_ranges_exp)
@@ -93,10 +88,10 @@ instr1 = visual.TextStim(win=win, name='instr1',
 # Initialize components for Routine "trial"
 trialClock = core.Clock()
 fixation_cross = visual.TextStim(win=win, name='fixation_cross',
-    text='+',
-    font='Arial',
+    text=u'+',
+    font=u'Arial',
     pos=(0, 0), height=0.2, wrapWidth=None, ori=0, 
-    color='white', colorSpace='rgb', opacity=1,
+    color=u'white', colorSpace='rgb', opacity=1,
     depth=0.0);
 word = visual.TextStim(win=win, name='word',
     text='default text',
@@ -128,10 +123,10 @@ instrText = visual.TextStim(win=win, name='instrText',
 # Initialize components for Routine "trial"
 trialClock = core.Clock()
 fixation_cross = visual.TextStim(win=win, name='fixation_cross',
-    text='+',
-    font='Arial',
+    text=u'+',
+    font=u'Arial',
     pos=(0, 0), height=0.2, wrapWidth=None, ori=0, 
-    color='white', colorSpace='rgb', opacity=1,
+    color=u'white', colorSpace='rgb', opacity=1,
     depth=0.0);
 word = visual.TextStim(win=win, name='word',
     text='default text',
@@ -315,7 +310,7 @@ for thisPractice in practice:
             fixation_cross.tStart = t
             fixation_cross.frameNStart = frameN  # exact frame index
             fixation_cross.setAutoDraw(True)
-        frameRemains = 0.0 + 1.0- win.monitorFramePeriod * 0.75  # most of one frame period left
+        frameRemains = 0.0 + .5- win.monitorFramePeriod * 0.75  # most of one frame period left
         if fixation_cross.status == STARTED and t >= frameRemains:
             fixation_cross.setAutoDraw(False)
         
@@ -336,7 +331,7 @@ for thisPractice in practice:
             win.callOnFlip(resp.clock.reset)  # t=0 on next screen flip
             event.clearEvents(eventType='keyboard')
         if resp.status == STARTED:
-            theseKeys = event.getKeys(keyList=['left', 'down', 'right'])
+            theseKeys = event.getKeys(keyList=['f', 'j', 'k'])
             
             # check for quit:
             if "escape" in theseKeys:
@@ -596,7 +591,7 @@ for thisTrial_blocks_exp in trial_blocks_exp:
                 fixation_cross.tStart = t
                 fixation_cross.frameNStart = frameN  # exact frame index
                 fixation_cross.setAutoDraw(True)
-            frameRemains = 0.0 + 1.0- win.monitorFramePeriod * 0.75  # most of one frame period left
+            frameRemains = 0.0 + .5- win.monitorFramePeriod * 0.75  # most of one frame period left
             if fixation_cross.status == STARTED and t >= frameRemains:
                 fixation_cross.setAutoDraw(False)
             
@@ -617,7 +612,7 @@ for thisTrial_blocks_exp in trial_blocks_exp:
                 win.callOnFlip(resp.clock.reset)  # t=0 on next screen flip
                 event.clearEvents(eventType='keyboard')
             if resp.status == STARTED:
-                theseKeys = event.getKeys(keyList=['left', 'down', 'right'])
+                theseKeys = event.getKeys(keyList=['f', 'j', 'k'])
                 
                 # check for quit:
                 if "escape" in theseKeys:

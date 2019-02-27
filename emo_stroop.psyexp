@@ -59,7 +59,7 @@
     </Routine>
     <Routine name="set_trial_blocks">
       <CodeComponent name="code_component">
-        <Param name="Begin Experiment" updates="constant" val="import random&amp;#10;import pandas as pd&amp;#10;block_ranges = pd.read_csv('choose_blocks.csv')&amp;#10;&amp;#10;# Prepare practice blocks&amp;#10;block_ranges_practice = list(block_ranges.choose_blocks_practice)&amp;#10;print(block_ranges_practice)&amp;#10;random.shuffle(block_ranges_practice)&amp;#10;&amp;#10;# Prepare experiment blocks&amp;#10;block_ranges_exp = list(block_ranges.choose_blocks_exp)&amp;#10;random.shuffle(block_ranges_exp)&amp;#10;print (2, block_ranges_exp)" valType="extendedCode"/>
+        <Param name="Begin Experiment" updates="constant" val="import random&amp;#10;import pandas as pd&amp;#10;block_ranges = pd.read_csv('choose_blocks.csv')&amp;#10;&amp;#10;# Prepare experiment blocks&amp;#10;block_ranges_exp = list(block_ranges.choose_blocks_exp)&amp;#10;random.shuffle(block_ranges_exp)&amp;#10;print (2, block_ranges_exp)" valType="extendedCode"/>
         <Param name="name" updates="None" val="code_component" valType="code"/>
         <Param name="Begin Routine" updates="constant" val="" valType="extendedCode"/>
         <Param name="End Routine" updates="constant" val="" valType="extendedCode"/>
