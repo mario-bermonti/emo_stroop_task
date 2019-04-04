@@ -1,8 +1,8 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-This experiment was created using PsychoPy2 Experiment Builder (v1.85.6),
-    on Wed Feb 27 15:13:46 2019
+This experiment was created using PsychoPy3 Experiment Builder (v3.0.5),
+    on Thu Apr  4 19:18:28 2019
 If you publish work using this script please cite the PsychoPy publications:
     Peirce, JW (2007) PsychoPy - Psychophysics software in Python.
         Journal of Neuroscience Methods, 162(1-2), 8-13.
@@ -11,7 +11,7 @@ If you publish work using this script please cite the PsychoPy publications:
 """
 
 from __future__ import absolute_import, division
-from psychopy import locale_setup, sound, gui, visual, core, data, event, logging
+from psychopy import locale_setup, sound, gui, visual, core, data, event, logging, clock
 from psychopy.constants import (NOT_STARTED, STARTED, PLAYING, PAUSED,
                                 STOPPED, FINISHED, PRESSED, RELEASED, FOREVER)
 import numpy as np  # whole numpy lib is available, prepend 'np.'
@@ -21,18 +21,21 @@ from numpy.random import random, randint, normal, shuffle
 import os  # handy system and path functions
 import sys  # to get file system encoding
 
+
 # Ensure that relative paths start from the same directory as this script
-_thisDir = os.path.dirname(os.path.abspath(__file__)).decode(sys.getfilesystemencoding())
+_thisDir = os.path.dirname(os.path.abspath(__file__))
 os.chdir(_thisDir)
 
 # Store info about the experiment session
+psychopyVersion = '3.0.5'
 expName = 'emo_stroop'  # from the Builder filename that created this script
-expInfo = {'participant':'', 'session':'01'}
+expInfo = {'participant': '', 'session': '01'}
 dlg = gui.DlgFromDict(dictionary=expInfo, title=expName)
 if dlg.OK == False:
     core.quit()  # user pressed cancel
 expInfo['date'] = data.getDateStr()  # add a simple timestamp
 expInfo['expName'] = expName
+expInfo['psychopyVersion'] = psychopyVersion
 
 # Data file name stem = absolute path + name; later add .psyexp, .csv, .log, etc
 filename = _thisDir + os.sep + u'data' + os.sep + '%s_%s' % (expInfo['participant'], expInfo['date'])
@@ -40,7 +43,7 @@ filename = _thisDir + os.sep + u'data' + os.sep + '%s_%s' % (expInfo['participan
 # An ExperimentHandler isn't essential but helps with data saving
 thisExp = data.ExperimentHandler(name=expName, version='',
     extraInfo=expInfo, runtimeInfo=None,
-    originPath=u'/Users/MBP/Box Sync/PHSU/Design and stats consultation/Consult Eliut/Suicide and Emotional Regulation Project/Emotional Stroop Task/emo_stroop.psyexp',
+    originPath='/Users/MBP/Box Sync/PHSU/Design and stats consultation/Consult Eliut/Suicide and Emotional Regulation Project/Emotional Stroop Task/emo_stroop_lastrun.py',
     savePickle=True, saveWideText=True,
     dataFileName=filename)
 # save a log file for detail verbose info
@@ -53,7 +56,7 @@ endExpNow = False  # flag for 'escape' or other condition => quit the exp
 
 # Setup the Window
 win = visual.Window(
-    size=(1920, 1080), fullscr=True, screen=0,
+    size=[2560, 1440], fullscr=True, screen=0,
     allowGUI=False, allowStencil=False,
     monitor='testMonitor', color='black', colorSpace='rgb',
     blendMode='avg', useFBO=True,
@@ -79,25 +82,28 @@ print (2, block_ranges_exp)
 # Initialize components for Routine "instructPractice"
 instructPracticeClock = core.Clock()
 instr1 = visual.TextStim(win=win, name='instr1',
-    text=u'Recuerda, ignora la palabra.\n\nPresiona:\nIzquierda para letras rojas\nAbajo para letras verdes\nDerecha para letras azules\n\nVamos a comenzar con unos ejercicios de pr\xe1ctica\n\nPresiona cualquier tecla para comenzar',
+    text='Recuerda, ignora la palabra.\n\nPresiona:\nIzquierda para letras rojas\nAbajo para letras verdes\nDerecha para letras azules\n\nVamos a comenzar con unos ejercicios de práctica\n\nPresiona cualquier tecla para comenzar',
     font='Arial',
     pos=[0, 0], height=0.07, wrapWidth=None, ori=0, 
-    color='white', colorSpace='rgb', opacity=1,
+    color='white', colorSpace='rgb', opacity=1, 
+    languageStyle='LTR',
     depth=0.0);
 
 # Initialize components for Routine "trial"
 trialClock = core.Clock()
 fixation_cross = visual.TextStim(win=win, name='fixation_cross',
-    text=u'+',
-    font=u'Arial',
+    text='+',
+    font='Arial',
     pos=(0, 0), height=0.2, wrapWidth=None, ori=0, 
-    color=u'white', colorSpace='rgb', opacity=1,
+    color='white', colorSpace='rgb', opacity=1, 
+    languageStyle='LTR',
     depth=0.0);
 word = visual.TextStim(win=win, name='word',
     text='default text',
     font='Arial',
     pos=[0, 0], height=0.15, wrapWidth=None, ori=0, 
-    color=1.0, colorSpace='rgb', opacity=1,
+    color='white', colorSpace='rgb', opacity=1, 
+    languageStyle='LTR',
     depth=-1.0);
 
 # Initialize components for Routine "feedback"
@@ -108,40 +114,45 @@ feedback_2 = visual.TextStim(win=win, name='feedback_2',
     text='default text',
     font='Arial',
     pos=[0, 0], height=0.1, wrapWidth=None, ori=0, 
-    color=[1,1,1], colorSpace='rgb', opacity=1,
+    color=[1,1,1], colorSpace='rgb', opacity=1, 
+    languageStyle='LTR',
     depth=-1.0);
 
 # Initialize components for Routine "instruct"
 instructClock = core.Clock()
 instrText = visual.TextStim(win=win, name='instrText',
-    text=u'\xbfListo para comenzar el experimento real?\n\nRecuerda, ignora la palabra en s\xed misma.\n\nPresiona:\nIzquierda para letras rojas\nAbajo para letras verdes\nDerecha para letras azules\n\nPresiona cualquier tecla para comenzar',
+    text='¿Listo para comenzar el experimento real?\n\nRecuerda, ignora la palabra en sí misma.\n\nPresiona:\nIzquierda para letras rojas\nAbajo para letras verdes\nDerecha para letras azules\n\nPresiona cualquier tecla para comenzar',
     font='Arial',
     pos=[0, 0], height=0.07, wrapWidth=None, ori=0, 
-    color=[1, 1, 1], colorSpace='rgb', opacity=1,
+    color=[1, 1, 1], colorSpace='rgb', opacity=1, 
+    languageStyle='LTR',
     depth=0.0);
 
 # Initialize components for Routine "trial"
 trialClock = core.Clock()
 fixation_cross = visual.TextStim(win=win, name='fixation_cross',
-    text=u'+',
-    font=u'Arial',
+    text='+',
+    font='Arial',
     pos=(0, 0), height=0.2, wrapWidth=None, ori=0, 
-    color=u'white', colorSpace='rgb', opacity=1,
+    color='white', colorSpace='rgb', opacity=1, 
+    languageStyle='LTR',
     depth=0.0);
 word = visual.TextStim(win=win, name='word',
     text='default text',
     font='Arial',
     pos=[0, 0], height=0.15, wrapWidth=None, ori=0, 
-    color=1.0, colorSpace='rgb', opacity=1,
+    color='white', colorSpace='rgb', opacity=1, 
+    languageStyle='LTR',
     depth=-1.0);
 
 # Initialize components for Routine "thanks"
 thanksClock = core.Clock()
 thanksText = visual.TextStim(win=win, name='thanksText',
-    text=u'\xa1Completaste el experimento!\n\n\xa1Muchas gracias!',
+    text='¡Completaste el experimento!\n\n¡Muchas gracias!',
     font='arial',
     pos=[0, 0], height=0.1, wrapWidth=None, ori=0, 
-    color=[1, 1, 1], colorSpace='rgb', opacity=1,
+    color=[1, 1, 1], colorSpace='rgb', opacity=1, 
+    languageStyle='LTR',
     depth=0.0);
 
 # Create some handy timers
@@ -169,6 +180,10 @@ while continueRoutine:
     # update/draw components on each frame
     
     
+    # check for quit (typically the Esc key)
+    if endExpNow or event.getKeys(keyList=["escape"]):
+        core.quit()
+    
     # check if all components have finished
     if not continueRoutine:  # a component has requested a forced-end of Routine
         break
@@ -177,10 +192,6 @@ while continueRoutine:
         if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
             continueRoutine = True
             break  # at least one component has not yet finished
-    
-    # check for quit (the Esc key)
-    if endExpNow or event.getKeys(keyList=["escape"]):
-        core.quit()
     
     # refresh the screen
     if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
@@ -239,6 +250,10 @@ while continueRoutine:
             # a response ends the routine
             continueRoutine = False
     
+    # check for quit (typically the Esc key)
+    if endExpNow or event.getKeys(keyList=["escape"]):
+        core.quit()
+    
     # check if all components have finished
     if not continueRoutine:  # a component has requested a forced-end of Routine
         break
@@ -247,10 +262,6 @@ while continueRoutine:
         if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
             continueRoutine = True
             break  # at least one component has not yet finished
-    
-    # check for quit (the Esc key)
-    if endExpNow or event.getKeys(keyList=["escape"]):
-        core.quit()
     
     # refresh the screen
     if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
@@ -272,15 +283,15 @@ thisExp.addLoop(practice)  # add the loop to the experiment
 thisPractice = practice.trialList[0]  # so we can initialise stimuli with some values
 # abbreviate parameter names if possible (e.g. rgb = thisPractice.rgb)
 if thisPractice != None:
-    for paramName in thisPractice.keys():
-        exec(paramName + '= thisPractice.' + paramName)
+    for paramName in thisPractice:
+        exec('{} = thisPractice[paramName]'.format(paramName))
 
 for thisPractice in practice:
     currentLoop = practice
     # abbreviate parameter names if possible (e.g. rgb = thisPractice.rgb)
     if thisPractice != None:
-        for paramName in thisPractice.keys():
-            exec(paramName + '= thisPractice.' + paramName)
+        for paramName in thisPractice:
+            exec('{} = thisPractice[paramName]'.format(paramName))
     
     # ------Prepare to start Routine "trial"-------
     t = 0
@@ -331,7 +342,7 @@ for thisPractice in practice:
             win.callOnFlip(resp.clock.reset)  # t=0 on next screen flip
             event.clearEvents(eventType='keyboard')
         if resp.status == STARTED:
-            theseKeys = event.getKeys(keyList=['f', 'j', 'k'])
+            theseKeys = event.getKeys(keyList=['f', 'j', 'space'])
             
             # check for quit:
             if "escape" in theseKeys:
@@ -347,6 +358,10 @@ for thisPractice in practice:
                 # a response ends the routine
                 continueRoutine = False
         
+        # check for quit (typically the Esc key)
+        if endExpNow or event.getKeys(keyList=["escape"]):
+            core.quit()
+        
         # check if all components have finished
         if not continueRoutine:  # a component has requested a forced-end of Routine
             break
@@ -355,10 +370,6 @@ for thisPractice in practice:
             if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
                 continueRoutine = True
                 break  # at least one component has not yet finished
-        
-        # check for quit (the Esc key)
-        if endExpNow or event.getKeys(keyList=["escape"]):
-            core.quit()
         
         # refresh the screen
         if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
@@ -373,9 +384,9 @@ for thisPractice in practice:
         resp.keys=None
         # was no response the correct answer?!
         if str(corrAns).lower() == 'none':
-           resp.corr = 1  # correct non-response
+           resp.corr = 1;  # correct non-response
         else:
-           resp.corr = 0  # failed to respond (incorrectly)
+           resp.corr = 0;  # failed to respond (incorrectly)
     # store data for practice (TrialHandler)
     practice.addData('resp.keys',resp.keys)
     practice.addData('resp.corr', resp.corr)
@@ -420,6 +431,10 @@ for thisPractice in practice:
         if feedback_2.status == STARTED and t >= frameRemains:
             feedback_2.setAutoDraw(False)
         
+        # check for quit (typically the Esc key)
+        if endExpNow or event.getKeys(keyList=["escape"]):
+            core.quit()
+        
         # check if all components have finished
         if not continueRoutine:  # a component has requested a forced-end of Routine
             break
@@ -428,10 +443,6 @@ for thisPractice in practice:
             if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
                 continueRoutine = True
                 break  # at least one component has not yet finished
-        
-        # check for quit (the Esc key)
-        if endExpNow or event.getKeys(keyList=["escape"]):
-            core.quit()
         
         # refresh the screen
         if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
@@ -501,6 +512,10 @@ while continueRoutine:
             # a response ends the routine
             continueRoutine = False
     
+    # check for quit (typically the Esc key)
+    if endExpNow or event.getKeys(keyList=["escape"]):
+        core.quit()
+    
     # check if all components have finished
     if not continueRoutine:  # a component has requested a forced-end of Routine
         break
@@ -509,10 +524,6 @@ while continueRoutine:
         if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
             continueRoutine = True
             break  # at least one component has not yet finished
-    
-    # check for quit (the Esc key)
-    if endExpNow or event.getKeys(keyList=["escape"]):
-        core.quit()
     
     # refresh the screen
     if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
@@ -534,15 +545,15 @@ thisExp.addLoop(trial_blocks_exp)  # add the loop to the experiment
 thisTrial_blocks_exp = trial_blocks_exp.trialList[0]  # so we can initialise stimuli with some values
 # abbreviate parameter names if possible (e.g. rgb = thisTrial_blocks_exp.rgb)
 if thisTrial_blocks_exp != None:
-    for paramName in thisTrial_blocks_exp.keys():
-        exec(paramName + '= thisTrial_blocks_exp.' + paramName)
+    for paramName in thisTrial_blocks_exp:
+        exec('{} = thisTrial_blocks_exp[paramName]'.format(paramName))
 
 for thisTrial_blocks_exp in trial_blocks_exp:
     currentLoop = trial_blocks_exp
     # abbreviate parameter names if possible (e.g. rgb = thisTrial_blocks_exp.rgb)
     if thisTrial_blocks_exp != None:
-        for paramName in thisTrial_blocks_exp.keys():
-            exec(paramName + '= thisTrial_blocks_exp.' + paramName)
+        for paramName in thisTrial_blocks_exp:
+            exec('{} = thisTrial_blocks_exp[paramName]'.format(paramName))
     
     # set up handler to look after randomisation of conditions etc
     trials = data.TrialHandler(nReps=1.0, method='random', 
@@ -553,15 +564,15 @@ for thisTrial_blocks_exp in trial_blocks_exp:
     thisTrial = trials.trialList[0]  # so we can initialise stimuli with some values
     # abbreviate parameter names if possible (e.g. rgb = thisTrial.rgb)
     if thisTrial != None:
-        for paramName in thisTrial.keys():
-            exec(paramName + '= thisTrial.' + paramName)
+        for paramName in thisTrial:
+            exec('{} = thisTrial[paramName]'.format(paramName))
     
     for thisTrial in trials:
         currentLoop = trials
         # abbreviate parameter names if possible (e.g. rgb = thisTrial.rgb)
         if thisTrial != None:
-            for paramName in thisTrial.keys():
-                exec(paramName + '= thisTrial.' + paramName)
+            for paramName in thisTrial:
+                exec('{} = thisTrial[paramName]'.format(paramName))
         
         # ------Prepare to start Routine "trial"-------
         t = 0
@@ -612,7 +623,7 @@ for thisTrial_blocks_exp in trial_blocks_exp:
                 win.callOnFlip(resp.clock.reset)  # t=0 on next screen flip
                 event.clearEvents(eventType='keyboard')
             if resp.status == STARTED:
-                theseKeys = event.getKeys(keyList=['f', 'j', 'k'])
+                theseKeys = event.getKeys(keyList=['f', 'j', 'space'])
                 
                 # check for quit:
                 if "escape" in theseKeys:
@@ -628,6 +639,10 @@ for thisTrial_blocks_exp in trial_blocks_exp:
                     # a response ends the routine
                     continueRoutine = False
             
+            # check for quit (typically the Esc key)
+            if endExpNow or event.getKeys(keyList=["escape"]):
+                core.quit()
+            
             # check if all components have finished
             if not continueRoutine:  # a component has requested a forced-end of Routine
                 break
@@ -636,10 +651,6 @@ for thisTrial_blocks_exp in trial_blocks_exp:
                 if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
                     continueRoutine = True
                     break  # at least one component has not yet finished
-            
-            # check for quit (the Esc key)
-            if endExpNow or event.getKeys(keyList=["escape"]):
-                core.quit()
             
             # refresh the screen
             if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
@@ -654,9 +665,9 @@ for thisTrial_blocks_exp in trial_blocks_exp:
             resp.keys=None
             # was no response the correct answer?!
             if str(corrAns).lower() == 'none':
-               resp.corr = 1  # correct non-response
+               resp.corr = 1;  # correct non-response
             else:
-               resp.corr = 0  # failed to respond (incorrectly)
+               resp.corr = 0;  # failed to respond (incorrectly)
         # store data for trials (TrialHandler)
         trials.addData('resp.keys',resp.keys)
         trials.addData('resp.corr', resp.corr)
@@ -721,6 +732,10 @@ while continueRoutine and routineTimer.getTime() > 0:
     if thanksText.status == STARTED and t >= frameRemains:
         thanksText.setAutoDraw(False)
     
+    # check for quit (typically the Esc key)
+    if endExpNow or event.getKeys(keyList=["escape"]):
+        core.quit()
+    
     # check if all components have finished
     if not continueRoutine:  # a component has requested a forced-end of Routine
         break
@@ -729,10 +744,6 @@ while continueRoutine and routineTimer.getTime() > 0:
         if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
             continueRoutine = True
             break  # at least one component has not yet finished
-    
-    # check for quit (the Esc key)
-    if endExpNow or event.getKeys(keyList=["escape"]):
-        core.quit()
     
     # refresh the screen
     if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen

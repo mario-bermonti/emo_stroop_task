@@ -128,7 +128,7 @@
         <Param name="startEstim" updates="None" val="" valType="code"/>
         <Param name="discard previous" updates="constant" val="True" valType="bool"/>
         <Param name="startType" updates="None" val="time (s)" valType="str"/>
-        <Param name="allowedKeys" updates="constant" val="'f', 'j', 'k'" valType="code"/>
+        <Param name="allowedKeys" updates="constant" val="'f', 'j', 'space'" valType="code"/>
         <Param name="stopType" updates="None" val="duration (s)" valType="str"/>
         <Param name="startVal" updates="None" val="1.5" valType="code"/>
         <Param name="store" updates="constant" val="last key" valType="str"/>
@@ -272,7 +272,7 @@
       <Param name="loopType" updates="None" val="random" valType="str"/>
       <Param name="nReps" updates="None" val="1" valType="num"/>
       <Param name="endPoints" updates="None" val="[1, 2]" valType="num"/>
-      <Param name="conditions" updates="None" val="[{'text': u'positiva1', 'condition': u'positive', 'corrAns': u'right', 'letterColor': u'blue'}, {'text': u'negativa1', 'condition': u'negative', 'corrAns': u'right', 'letterColor': u'blue'}, {'text': u'neutral1', 'condition': u'neutral', 'corrAns': u'right', 'letterColor': u'blue'}, {'text': u'positiva2', 'condition': u'positive', 'corrAns': u'down', 'letterColor': u'green'}, {'text': u'negativa2', 'condition': u'negative', 'corrAns': u'down', 'letterColor': u'green'}, {'text': u'neutral2', 'condition': u'neutral', 'corrAns': u'down', 'letterColor': u'green'}, {'text': u'positiva3', 'condition': u'positive', 'corrAns': u'left', 'letterColor': u'red'}, {'text': u'negativa3', 'condition': u'negative', 'corrAns': u'left', 'letterColor': u'red'}, {'text': u'neutral3', 'condition': u'neutral', 'corrAns': u'left', 'letterColor': u'red'}, {'text': u'positiva4', 'condition': u'positive', 'corrAns': u'right', 'letterColor': u'blue'}, {'text': u'negativa4', 'condition': u'negative', 'corrAns': u'right', 'letterColor': u'blue'}, {'text': u'neutral4', 'condition': u'neutral', 'corrAns': u'right', 'letterColor': u'blue'}, {'text': u'positiva5', 'condition': u'positive', 'corrAns': u'down', 'letterColor': u'green'}, {'text': u'negativa5', 'condition': u'negative', 'corrAns': u'down', 'letterColor': u'green'}, {'text': u'neutral5', 'condition': u'neutral', 'corrAns': u'down', 'letterColor': u'green'}, {'text': u'positiva6', 'condition': u'positive', 'corrAns': u'left', 'letterColor': u'red'}, {'text': u'negativa6', 'condition': u'negative', 'corrAns': u'left', 'letterColor': u'red'}, {'text': u'neutral6', 'condition': u'neutral', 'corrAns': u'left', 'letterColor': u'red'}]" valType="str"/>
+      <Param name="conditions" updates="None" val="None" valType="str"/>
       <Param name="Selected rows" updates="None" val="$block_ranges_exp.pop()" valType="str"/>
     </LoopInitiator>
     <Routine name="trial"/>
