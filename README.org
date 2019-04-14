@@ -1,0 +1,80 @@
+# Created 2019-04-14 Sun 17:02
+#+TITLE: Emotional Stroop task - Spanish
+This is a Spanish Emotional Stroop task (EST) developed for a research project
+conducted in the neurocognitive laboratory at Ponce Health Sciences University.
+This project compares people with a history of suicidal behavior vs a control
+group (non-clinical population) on this and other tasks.
+
+The EST was developed using Psychopy 3 (citation) builder but includes code
+components. It can't be run with Psychopy 2 because it uses Unicode
+characters (i.e., words with accents) and Psychopy crashes with this sort of
+stimuli or doesn't display it correctly. It includes practice and experiment trials.
+
+The EST was translated from the extended Stroop task (includes
+instructions and practice trials) found in the demos that Psychopy provides. The
+materials were translated and the trial document (csv file) was adapted.
+
+* Practice trials
+The EST includes 24 practice trials consisting of congruent word and colors.
+The words presented are azul, rojo, and verde (i.e., Spanish words for
+blue, red, and green) and are presented in colors blue, red, and green.
+Participants respond by pressing:
+- f for red
+- j for green
+- "space bar" for blue
+
+
+** Practice trial's structure:
+- instructions
+- fixation cross for .5 sec
+- blank screen for .5 sec
+- the word is presented until a response is made
+- participant makes a response with the keyboard (f, j, space bar)
+- the participant receive feedback
+
+
+Practice trials are organized into blocks of 6 words (two of each color) and
+blocks are presented randomly.
+
+* Experimental trials
+There are 48 words from each valence (i.e., positive, negative, and neutral)
+for a total of 144 words. Each word is presented only once.
+
+** Experimental trial's structure:
+- instructions
+- fixation cross for .5 sec
+- blank screen for .5 sec
+- word is presented until response is made
+- participant makes repines with the keyboard (f, j, space bar)
+
+** Technical details about blocks:
+- Trials (stimuli) are organized into blocks to get semi-randomization:
+  - 16 blocks
+  - Each block has 9 trials: 3 words from each valence, with 1 word for
+    each valence - color combination
+
+The following table represents one block.
+|-----------+-------------+---------+-----------|
+| text      | letterColor | corrAns | condition |
+|-----------+-------------+---------+-----------|
+| positive1 | blue        | j       | positive  |
+| negative1 | blue        | j       | negative  |
+| neutral1  | blue        | j       | neutral   |
+| positive2 | green       | space   | positive  |
+| negative2 | green       | space   | negative  |
+| neutral2  | green       | space   | neutral   |
+| positive3 | red         | f       | positive  |
+| negative3 | red         | f       | negative  |
+| neutral3  | red         | f       | neutral   |
+|-----------+-------------+---------+-----------|
+
+- These blocks for randomization are organized into 4 large experimental
+  blocks of 36 trials each.
+- Participants are allowed 3 breaks to rest (one rest after completing every 36
+  trials. The participant continues by pressing a key.
+- Conditions are balanced in terms of word length
+
+* Contact
+If you have any questions don't hesitate to conctact me at [[mailto:mbermonti@psm.edu][mbermonti@psm.edu]].
+If you find any errors or bugs, please open an issue and I'll work on it
+as soon as possible.
