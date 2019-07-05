@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v3.0.5),
-    on mar  2 jul 11:35:38 2019
+    on mar  2 jul 11:58:26 2019
 If you publish work using this script please cite the PsychoPy publications:
     Peirce, JW (2007) PsychoPy - Psychophysics software in Python.
         Journal of Neuroscience Methods, 162(1-2), 8-13.
@@ -11,7 +11,7 @@ If you publish work using this script please cite the PsychoPy publications:
 """
 
 from __future__ import absolute_import, division
-from psychopy import locale_setup, sound, gui, visual, core, data, event, logging, clock
+from psychopy import locale_setup, sound, gui, visual, core, data, event, logging, clock, parallel
 from psychopy.constants import (NOT_STARTED, STARTED, PLAYING, PAUSED,
                                 STOPPED, FINISHED, PRESSED, RELEASED, FOREVER)
 import numpy as np  # whole numpy lib is available, prepend 'np.'
@@ -91,16 +91,16 @@ instr_practice = visual.TextStim(win=win, name='instr_practice',
     languageStyle='LTR',
     depth=0.0);
 
-# Initialize components for Routine "trial"
-trialClock = core.Clock()
-fixation_cross = visual.TextStim(win=win, name='fixation_cross',
+# Initialize components for Routine "trial_practice"
+trial_practiceClock = core.Clock()
+fixation_cross_practice = visual.TextStim(win=win, name='fixation_cross_practice',
     text='+',
     font='Arial',
     pos=(0, 0), height=0.4, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     languageStyle='LTR',
     depth=0.0);
-word_exp = visual.TextStim(win=win, name='word_exp',
+word_practice = visual.TextStim(win=win, name='word_practice',
     text='default text',
     font='Arial',
     pos=[0, 0], height=0.15, wrapWidth=None, ori=0, 
@@ -143,27 +143,29 @@ instr_exp = visual.TextStim(win=win, name='instr_exp',
 
 # Initialize components for Routine "trial_exp"
 trial_expClock = core.Clock()
-fixation_cross_text = visual.TextStim(win=win, name='fixation_cross_text',
+fixation_cross_exp = visual.TextStim(win=win, name='fixation_cross_exp',
     text='+',
     font='Arial',
-    pos=(0, 0), height=0.3, wrapWidth=None, ori=0, 
+    pos=(0, 0), height=0.4, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     languageStyle='LTR',
     depth=0.0);
-word_exp_2 = visual.TextStim(win=win, name='word_exp_2',
+word_exp = visual.TextStim(win=win, name='word_exp',
     text='default text',
     font='Arial',
     pos=(0, 0), height=0.15, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     languageStyle='LTR',
     depth=-1.0);
+p_port = parallel.ParallelPort(address='0x0378')
+print(p_port)
 feedback_too_slow = visual.TextStim(win=win, name='feedback_too_slow',
     text='¡Muy lento!\n\n¡Intenta responder más rápido!',
     font='Arial',
     pos=(0, 0), height=0.1, wrapWidth=None, ori=0, 
     color='white', colorSpace='rgb', opacity=1, 
     languageStyle='LTR',
-    depth=-3.0);
+    depth=-4.0);
 
 
 # Initialize components for Routine "ISI"
@@ -336,68 +338,68 @@ for thisPractice_loop in practice_loop:
         for paramName in thisPractice_loop:
             exec('{} = thisPractice_loop[paramName]'.format(paramName))
     
-    # ------Prepare to start Routine "trial"-------
+    # ------Prepare to start Routine "trial_practice"-------
     t = 0
-    trialClock.reset()  # clock
+    trial_practiceClock.reset()  # clock
     frameN = -1
     continueRoutine = True
     # update component parameters for each repeat
-    word_exp.setColor(letterColor, colorSpace='rgb')
-    word_exp.setText(text)
-    resp_exp = event.BuilderKeyResponse()
+    word_practice.setColor(letterColor, colorSpace='rgb')
+    word_practice.setText(text)
+    resp_practice = event.BuilderKeyResponse()
     # keep track of which components have finished
-    trialComponents = [fixation_cross, word_exp, resp_exp]
-    for thisComponent in trialComponents:
+    trial_practiceComponents = [fixation_cross_practice, word_practice, resp_practice]
+    for thisComponent in trial_practiceComponents:
         if hasattr(thisComponent, 'status'):
             thisComponent.status = NOT_STARTED
     
-    # -------Start Routine "trial"-------
+    # -------Start Routine "trial_practice"-------
     while continueRoutine:
         # get current time
-        t = trialClock.getTime()
+        t = trial_practiceClock.getTime()
         frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
         # update/draw components on each frame
         
-        # *fixation_cross* updates
-        if t >= 0.0 and fixation_cross.status == NOT_STARTED:
+        # *fixation_cross_practice* updates
+        if t >= 0.0 and fixation_cross_practice.status == NOT_STARTED:
             # keep track of start time/frame for later
-            fixation_cross.tStart = t
-            fixation_cross.frameNStart = frameN  # exact frame index
-            fixation_cross.setAutoDraw(True)
+            fixation_cross_practice.tStart = t
+            fixation_cross_practice.frameNStart = frameN  # exact frame index
+            fixation_cross_practice.setAutoDraw(True)
         frameRemains = 0.0 + 1- win.monitorFramePeriod * 0.75  # most of one frame period left
-        if fixation_cross.status == STARTED and t >= frameRemains:
-            fixation_cross.setAutoDraw(False)
+        if fixation_cross_practice.status == STARTED and t >= frameRemains:
+            fixation_cross_practice.setAutoDraw(False)
         
-        # *word_exp* updates
-        if t >= 1.5 and word_exp.status == NOT_STARTED:
+        # *word_practice* updates
+        if t >= 1.5 and word_practice.status == NOT_STARTED:
             # keep track of start time/frame for later
-            word_exp.tStart = t
-            word_exp.frameNStart = frameN  # exact frame index
-            word_exp.setAutoDraw(True)
+            word_practice.tStart = t
+            word_practice.frameNStart = frameN  # exact frame index
+            word_practice.setAutoDraw(True)
         
-        # *resp_exp* updates
-        if t >= 1.5 and resp_exp.status == NOT_STARTED:
+        # *resp_practice* updates
+        if t >= 1.5 and resp_practice.status == NOT_STARTED:
             # keep track of start time/frame for later
-            resp_exp.tStart = t
-            resp_exp.frameNStart = frameN  # exact frame index
-            resp_exp.status = STARTED
+            resp_practice.tStart = t
+            resp_practice.frameNStart = frameN  # exact frame index
+            resp_practice.status = STARTED
             # keyboard checking is just starting
-            win.callOnFlip(resp_exp.clock.reset)  # t=0 on next screen flip
+            win.callOnFlip(resp_practice.clock.reset)  # t=0 on next screen flip
             event.clearEvents(eventType='keyboard')
-        if resp_exp.status == STARTED:
+        if resp_practice.status == STARTED:
             theseKeys = event.getKeys(keyList=['f', 'j', 'space'])
             
             # check for quit:
             if "escape" in theseKeys:
                 endExpNow = True
             if len(theseKeys) > 0:  # at least one key was pressed
-                resp_exp.keys = theseKeys[-1]  # just the last key pressed
-                resp_exp.rt = resp_exp.clock.getTime()
+                resp_practice.keys = theseKeys[-1]  # just the last key pressed
+                resp_practice.rt = resp_practice.clock.getTime()
                 # was this 'correct'?
-                if (resp_exp.keys == str(corrAns)) or (resp_exp.keys == corrAns):
-                    resp_exp.corr = 1
+                if (resp_practice.keys == str(corrAns)) or (resp_practice.keys == corrAns):
+                    resp_practice.corr = 1
                 else:
-                    resp_exp.corr = 0
+                    resp_practice.corr = 0
                 # a response ends the routine
                 continueRoutine = False
         
@@ -409,7 +411,7 @@ for thisPractice_loop in practice_loop:
         if not continueRoutine:  # a component has requested a forced-end of Routine
             break
         continueRoutine = False  # will revert to True if at least one component still running
-        for thisComponent in trialComponents:
+        for thisComponent in trial_practiceComponents:
             if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
                 continueRoutine = True
                 break  # at least one component has not yet finished
@@ -418,24 +420,24 @@ for thisPractice_loop in practice_loop:
         if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
             win.flip()
     
-    # -------Ending Routine "trial"-------
-    for thisComponent in trialComponents:
+    # -------Ending Routine "trial_practice"-------
+    for thisComponent in trial_practiceComponents:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
     # check responses
-    if resp_exp.keys in ['', [], None]:  # No response was made
-        resp_exp.keys=None
+    if resp_practice.keys in ['', [], None]:  # No response was made
+        resp_practice.keys=None
         # was no response the correct answer?!
         if str(corrAns).lower() == 'none':
-           resp_exp.corr = 1;  # correct non-response
+           resp_practice.corr = 1;  # correct non-response
         else:
-           resp_exp.corr = 0;  # failed to respond (incorrectly)
+           resp_practice.corr = 0;  # failed to respond (incorrectly)
     # store data for practice_loop (TrialHandler)
-    practice_loop.addData('resp_exp.keys',resp_exp.keys)
-    practice_loop.addData('resp_exp.corr', resp_exp.corr)
-    if resp_exp.keys != None:  # we had a response
-        practice_loop.addData('resp_exp.rt', resp_exp.rt)
-    # the Routine "trial" was not non-slip safe, so reset the non-slip timer
+    practice_loop.addData('resp_practice.keys',resp_practice.keys)
+    practice_loop.addData('resp_practice.corr', resp_practice.corr)
+    if resp_practice.keys != None:  # we had a response
+        practice_loop.addData('resp_practice.rt', resp_practice.rt)
+    # the Routine "trial_practice" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
     
     # ------Prepare to start Routine "feedback"-------
@@ -446,7 +448,7 @@ for thisPractice_loop in practice_loop:
     routineTimer.add(1.000000)
     # update component parameters for each repeat
     # Message if correct response
-    if resp_exp.corr:#stored on last run routine
+    if resp_practice.corr:#stored on last run routine
       msg=u"¡Correcto!"
     
     # Message if incorrect response
@@ -681,12 +683,12 @@ for thisBlocks_loop in blocks_loop:
         frameN = -1
         continueRoutine = True
         # update component parameters for each repeat
-        word_exp_2.setColor(letterColor, colorSpace='rgb')
-        word_exp_2.setText(text)
-        resp_exp_2 = event.BuilderKeyResponse()
+        word_exp.setColor(letterColor, colorSpace='rgb')
+        word_exp.setText(text)
+        resp_exp = event.BuilderKeyResponse()
         
         # keep track of which components have finished
-        trial_expComponents = [fixation_cross_text, word_exp_2, resp_exp_2, feedback_too_slow]
+        trial_expComponents = [fixation_cross_exp, word_exp, p_port, resp_exp, feedback_too_slow]
         for thisComponent in trial_expComponents:
             if hasattr(thisComponent, 'status'):
                 thisComponent.status = NOT_STARTED
@@ -698,49 +700,60 @@ for thisBlocks_loop in blocks_loop:
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
             
-            # *fixation_cross_text* updates
-            if t >= 0.0 and fixation_cross_text.status == NOT_STARTED:
+            # *fixation_cross_exp* updates
+            if t >= 0.0 and fixation_cross_exp.status == NOT_STARTED:
                 # keep track of start time/frame for later
-                fixation_cross_text.tStart = t
-                fixation_cross_text.frameNStart = frameN  # exact frame index
-                fixation_cross_text.setAutoDraw(True)
+                fixation_cross_exp.tStart = t
+                fixation_cross_exp.frameNStart = frameN  # exact frame index
+                fixation_cross_exp.setAutoDraw(True)
             frameRemains = 0.0 + 1.0- win.monitorFramePeriod * 0.75  # most of one frame period left
-            if fixation_cross_text.status == STARTED and t >= frameRemains:
-                fixation_cross_text.setAutoDraw(False)
+            if fixation_cross_exp.status == STARTED and t >= frameRemains:
+                fixation_cross_exp.setAutoDraw(False)
             
-            # *word_exp_2* updates
-            if t >= 1.5 and word_exp_2.status == NOT_STARTED:
+            # *word_exp* updates
+            if t >= 1.5 and word_exp.status == NOT_STARTED:
                 # keep track of start time/frame for later
-                word_exp_2.tStart = t
-                word_exp_2.frameNStart = frameN  # exact frame index
-                word_exp_2.setAutoDraw(True)
+                word_exp.tStart = t
+                word_exp.frameNStart = frameN  # exact frame index
+                word_exp.setAutoDraw(True)
             frameRemains = 1.5 + 2- win.monitorFramePeriod * 0.75  # most of one frame period left
-            if word_exp_2.status == STARTED and t >= frameRemains:
-                word_exp_2.setAutoDraw(False)
-            
-            # *resp_exp_2* updates
-            if t >= 1.5 and resp_exp_2.status == NOT_STARTED:
+            if word_exp.status == STARTED and t >= frameRemains:
+                word_exp.setAutoDraw(False)
+            # *p_port* updates
+            if t >= 1.5 and p_port.status == NOT_STARTED:
                 # keep track of start time/frame for later
-                resp_exp_2.tStart = t
-                resp_exp_2.frameNStart = frameN  # exact frame index
-                resp_exp_2.status = STARTED
+                p_port.tStart = t
+                p_port.frameNStart = frameN  # exact frame index
+                p_port.status = STARTED
+                win.callOnFlip(p_port.setData, int(trigger))
+            frameRemains = 1.5 + 2.0- win.monitorFramePeriod * 0.75  # most of one frame period left
+            if p_port.status == STARTED and t >= frameRemains:
+                p_port.status = FINISHED
+                win.callOnFlip(p_port.setData, int(0))
+            
+            # *resp_exp* updates
+            if t >= 1.5 and resp_exp.status == NOT_STARTED:
+                # keep track of start time/frame for later
+                resp_exp.tStart = t
+                resp_exp.frameNStart = frameN  # exact frame index
+                resp_exp.status = STARTED
                 # keyboard checking is just starting
-                win.callOnFlip(resp_exp_2.clock.reset)  # t=0 on next screen flip
+                win.callOnFlip(resp_exp.clock.reset)  # t=0 on next screen flip
                 event.clearEvents(eventType='keyboard')
-            if resp_exp_2.status == STARTED:
+            if resp_exp.status == STARTED:
                 theseKeys = event.getKeys(keyList=['f', 'j', 'space'])
                 
                 # check for quit:
                 if "escape" in theseKeys:
                     endExpNow = True
                 if len(theseKeys) > 0:  # at least one key was pressed
-                    resp_exp_2.keys = theseKeys[-1]  # just the last key pressed
-                    resp_exp_2.rt = resp_exp_2.clock.getTime()
+                    resp_exp.keys = theseKeys[-1]  # just the last key pressed
+                    resp_exp.rt = resp_exp.clock.getTime()
                     # was this 'correct'?
-                    if (resp_exp_2.keys == str(corrAns)) or (resp_exp_2.keys == corrAns):
-                        resp_exp_2.corr = 1
+                    if (resp_exp.keys == str(corrAns)) or (resp_exp.keys == corrAns):
+                        resp_exp.corr = 1
                     else:
-                        resp_exp_2.corr = 0
+                        resp_exp.corr = 0
                     # a response ends the routine
                     continueRoutine = False
             
@@ -753,6 +766,14 @@ for thisBlocks_loop in blocks_loop:
             frameRemains = 3.5 + 1.0- win.monitorFramePeriod * 0.75  # most of one frame period left
             if feedback_too_slow.status == STARTED and t >= frameRemains:
                 feedback_too_slow.setAutoDraw(False)
+            # Ends the routine if the participant has
+            # taken more than 2 seconds to respond, after 
+            # presenting a message that they took too
+            # long to respond.
+            
+            # The absolute time from the start of the
+            # routine has to be used (fixation cross 
+            # + stim + keyboard + message).
             if t > 4.5:
                 continueRoutine = False
             
@@ -777,19 +798,21 @@ for thisBlocks_loop in blocks_loop:
         for thisComponent in trial_expComponents:
             if hasattr(thisComponent, "setAutoDraw"):
                 thisComponent.setAutoDraw(False)
+        if p_port.status == STARTED:
+            win.callOnFlip(p_port.setData, int(0))
         # check responses
-        if resp_exp_2.keys in ['', [], None]:  # No response was made
-            resp_exp_2.keys=None
+        if resp_exp.keys in ['', [], None]:  # No response was made
+            resp_exp.keys=None
             # was no response the correct answer?!
             if str(corrAns).lower() == 'none':
-               resp_exp_2.corr = 1;  # correct non-response
+               resp_exp.corr = 1;  # correct non-response
             else:
-               resp_exp_2.corr = 0;  # failed to respond (incorrectly)
+               resp_exp.corr = 0;  # failed to respond (incorrectly)
         # store data for trials_exp_loop (TrialHandler)
-        trials_exp_loop.addData('resp_exp_2.keys',resp_exp_2.keys)
-        trials_exp_loop.addData('resp_exp_2.corr', resp_exp_2.corr)
-        if resp_exp_2.keys != None:  # we had a response
-            trials_exp_loop.addData('resp_exp_2.rt', resp_exp_2.rt)
+        trials_exp_loop.addData('resp_exp.keys',resp_exp.keys)
+        trials_exp_loop.addData('resp_exp.corr', resp_exp.corr)
+        if resp_exp.keys != None:  # we had a response
+            trials_exp_loop.addData('resp_exp.rt', resp_exp.rt)
         
         # the Routine "trial_exp" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
